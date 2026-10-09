@@ -14,6 +14,14 @@ export interface SandboxHost {
   selectBlock(blockId: string | null): void
   /** Edit-overlay: a block is hovered in the canvas (Interface only). */
   hoverBlock(blockId: string | null): void
+  /** Edit-overlay: report a resolved drop location during a drag (Interface only). */
+  dropTarget(payload: {
+    parentId: string | null
+    index: number
+    rect?: { x: number; y: number; width: number; height: number }
+  }): void
+  /** Edit-overlay: no valid drop target / drag ended — clear the indicator. */
+  clearDropTarget(): void
   /** Report a block/compile/runtime error (→ console + Studio bridge). */
   reportError(payload: { message: string; stack?: string; blockId?: string; pageId?: string }): void
   /** Mirror a console entry to the Studio console panel. */
@@ -29,6 +37,8 @@ export function noopHost(): SandboxHost {
   return {
     selectBlock() {},
     hoverBlock() {},
+    dropTarget() {},
+    clearDropTarget() {},
     reportError() {},
     reportConsole() {},
     bridge: null,

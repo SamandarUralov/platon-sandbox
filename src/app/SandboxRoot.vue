@@ -41,7 +41,7 @@ function navigate(pageId: string) {
             {{ store.mode }}
           </span>
         </header>
-        <main class="pl-shell__canvas">
+        <main class="pl-shell__canvas" data-pl-canvas>
           <PageRenderer v-if="page" :page="page" />
           <div v-else class="pl-shell__empty">No page to display.</div>
         </main>

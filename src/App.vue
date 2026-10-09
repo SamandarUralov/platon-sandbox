@@ -12,6 +12,8 @@ import { onBeforeUnmount, onMounted, provide } from 'vue'
 import { parseProjectMeta } from '@/contracts'
 import { SandboxBridge, type StudioToSandboxMessage } from '@/protocol'
 import { HostKey, type SandboxHost } from '@/engine'
+import { capabilitiesFor } from '@/engine'
+import { attachEditOverlay } from '@/editing'
 import { useSandboxStore } from '@/state'
 import SandboxRoot from '@/app/SandboxRoot.vue'
 import { fieldOpsMeta } from '@/demo/fieldops'
@@ -22,6 +24,9 @@ const bridge = new SandboxBridge()
 const host: SandboxHost = {
   selectBlock: (id) => bridge.send({ type: 'block-selected', blockId: id }),
   hoverBlock: (id) => bridge.send({ type: 'block-hover', blockId: id }),
+  dropTarget: ({ parentId, index, rect }) =>
+    bridge.send({ type: 'drop-target', parentId, index, rect }),
+  clearDropTarget: () => bridge.send({ type: 'drop-clear' }),
   reportError: ({ message, stack, blockId, pageId }) => {
     store.pushConsole({ level: 'error', args: [message], ts: Date.now(), source: blockId ?? pageId })
     bridge.send({
@@ -71,11 +76,28 @@ function handleStudioMessage(msg: StudioToSandboxMessage) {
 }
 
 let unsubscribe: (() => void) | null = null
+let disposeOverlay: (() => void) | null = null
+
+function measureCanvasRoot() {
+  const el = document.querySelector<HTMLElement>('[data-pl-canvas]')
+  if (!el) return undefined
+  const r = el.getBoundingClientRect()
+  return { x: r.x, y: r.y, width: r.width, height: r.height }
+}
 
 onMounted(() => {
   bridge.start()
   unsubscribe = bridge.onStudioMessage(handleStudioMessage)
   bridge.send({ type: 'ready', protocolVersion: 1 })
+
+  // Edit overlay: drag → drop-target resolution (Interface only, SPEC §5).
+  disposeOverlay = attachEditOverlay({
+    host,
+    getTree: () => store.currentPage?.blocks ?? [],
+    isOverlayActive: () => capabilitiesFor(store.mode).editOverlay,
+    getRootRect: measureCanvasRoot,
+    win: window,
+  })
 
   // Standalone demo fallback (SPEC §12): no Studio parent ⇒ seed FieldOps.
   if (!bridge.embedded) {
@@ -85,6 +107,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   unsubscribe?.()
+  disposeOverlay?.()
   bridge.stop()
 })
 </script>
