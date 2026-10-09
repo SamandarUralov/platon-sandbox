@@ -25,6 +25,21 @@ export interface DataSource {
 }
 
 const DEFAULT_SEED_COUNT = 8
+/** Fixed faker seed → identical mock data across reloads/tests (SPEC §6). */
+const DEFAULT_FAKER_SEED = 1337
+
+/** Options for building the mock store (all optional; defaults are deterministic). */
+export interface MockStoreOptions {
+  /** Faker seed; fixed by default so generated data is reproducible. */
+  fakerSeed?: number
+  /** Rows generated per table when no explicit `seed` is given. */
+  rowsPerTable?: number
+  /**
+   * Manual data override, keyed by table name. Takes precedence over both the
+   * model's `seed` and faker generation (SPEC §6: "manual override allowed").
+   */
+  overrides?: Record<string, Row[]>
+}
 
 function fakeValue(col: DataModelColumn, index: number): unknown {
   const type = col.type.toLowerCase()
@@ -67,22 +82,37 @@ function fakeValue(col: DataModelColumn, index: number): unknown {
   }
 }
 
-/** Build a deterministic-ish mock store from data models (SPEC §6). */
-export function createMockStore(models: DataModel[]): DataSource {
-  // Deterministic demo data across reloads.
-  faker.seed(1337)
+/**
+ * Build a deterministic mock store from data models (SPEC §6).
+ *
+ * Precedence for a table's rows: `options.overrides[table]` → model `seed` →
+ * faker generation. Faker is seeded up front, so the same models + options
+ * always yield byte-identical data (tested in mockStore.test.ts).
+ */
+export function createMockStore(models: DataModel[], options: MockStoreOptions = {}): DataSource {
+  const rowsPerTable = options.rowsPerTable ?? DEFAULT_SEED_COUNT
+  const overrides = options.overrides ?? {}
+
+  // Reset faker to a fixed seed so generation is reproducible across calls.
+  faker.seed(options.fakerSeed ?? DEFAULT_FAKER_SEED)
 
   const data = new Map<string, Row[]>()
   const meta = new Map<string, DataModelColumn[]>()
 
   for (const model of models) {
     meta.set(model.table, model.columns)
+
+    const override = overrides[model.table]
+    if (override) {
+      data.set(model.table, override.map((r) => ({ ...r })))
+      continue
+    }
     if (model.seed?.length) {
       data.set(model.table, model.seed.map((r) => ({ ...r })))
       continue
     }
     const rows: Row[] = []
-    for (let i = 0; i < DEFAULT_SEED_COUNT; i++) {
+    for (let i = 0; i < rowsPerTable; i++) {
       const row: Row = {}
       for (const col of model.columns) row[col.name] = fakeValue(col, i)
       rows.push(row)

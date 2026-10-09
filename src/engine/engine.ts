@@ -10,12 +10,13 @@
 import { type InjectionKey, inject } from 'vue'
 import type { AxiosInstance } from 'axios'
 import axios from 'axios'
+import { QueryClient } from '@tanstack/vue-query'
 
 import type { Mode, ProjectMeta } from '@/contracts'
 import { createRegistry, type ComponentRegistry } from './registry'
-import { createInterfaceQueryEngine, type QueryEngine } from './query'
+import { type QueryEngine } from './query'
 import { createLogicEngine, type LogicEngine } from './logic'
-import { createMockStore, type DataSource } from '@/data/mockStore'
+import { createMockStore, createQueryEngineForMode, type DataSource } from '@/data'
 import { createImportMap, type ImportMap } from '@/importmap'
 
 export interface EngineContext {
@@ -35,6 +36,10 @@ export interface CreateEngineOptions {
   onError?: (error: unknown, source?: string) => void
   /** Base URL for the Preview axios instance. */
   httpBaseUrl?: string
+  /** Inject a preconfigured axios instance (tests / shared client). */
+  http?: AxiosInstance
+  /** Inject a tanstack QueryClient for Preview caching (tests / shared client). */
+  queryClient?: QueryClient
 }
 
 export function createEngine(opts: CreateEngineOptions): EngineContext {
@@ -42,10 +47,27 @@ export function createEngine(opts: CreateEngineOptions): EngineContext {
 
   const registry = createRegistry()
   const importMap = createImportMap()
+  // The mock store always exists (it also backs Interface overlay/demo), but
+  // only Interface mode queries route through it (SPEC §5).
   const dataSource = createMockStore(meta.data_models ?? [])
-  const query = createInterfaceQueryEngine(dataSource)
+  const http = opts.http ?? axios.create({ baseURL: opts.httpBaseUrl })
   const logic = createLogicEngine({ mode, onError: opts.onError })
-  const http = axios.create({ baseURL: opts.httpBaseUrl })
+
+  // Mode selects the data path (SPEC §5): Interface = in-memory mock, no HTTP;
+  // Preview = real axios cached through tanstack-query. A QueryClient is always
+  // provided in Preview so caching is real even when none is injected.
+  const query: QueryEngine = createQueryEngineForMode({
+    mode,
+    source: dataSource,
+    http,
+    queryClient:
+      mode === 'preview'
+        ? (opts.queryClient ??
+          // Sensible Preview defaults: cache reads within a session; explicit
+          // refetch actions (SPEC §2 `refetch`) invalidate when implemented.
+          new QueryClient({ defaultOptions: { queries: { staleTime: Infinity, retry: false } } }))
+        : undefined,
+  })
 
   return { mode, registry, importMap, dataSource, query, logic, http }
 }
