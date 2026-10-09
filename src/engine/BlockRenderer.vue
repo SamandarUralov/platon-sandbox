@@ -17,6 +17,8 @@ import { safeParseBlock } from '@/contracts'
 import { useEngine } from './engine'
 import { useCapabilities } from './mode'
 import { useHost } from './host'
+import { useCtx } from './ctx'
+import type { ActionEffects } from './dispatcher'
 import { isVisibleToRole } from './roles'
 import { useSandboxStore } from '@/state'
 import BlockErrorBoundary from './BlockErrorBoundary.vue'
@@ -27,6 +29,45 @@ const engine = useEngine()
 const caps = useCapabilities()
 const host = useHost()
 const store = useSandboxStore()
+const ctx = useCtx()
+
+/**
+ * Event → action pipeline wiring (SPEC §2, §5). Only active in Preview
+ * (`caps.actions`); in Interface the handler map is empty so no logic runs
+ * (only inner UI state). Each `block.events[name]` is dispatched as a sequential
+ * action pipeline via the engine dispatcher.
+ */
+const effects: ActionEffects = {
+  toast: (message, level) => host.reportConsole(level === 'error' ? 'error' : 'info', ['[toast]', message]),
+  openModal: (modal, p) => host.reportConsole('info', ['[open_modal]', modal, p]),
+  openForm: (form, p) => host.reportConsole('info', ['[open_form]', form, p]),
+  close: (target) => host.reportConsole('info', ['[close]', target]),
+  refetch: (target) => host.reportConsole('info', ['[refetch]', target]),
+  submit: (target) => host.reportConsole('info', ['[submit]', target]),
+}
+
+const eventHandlers = computed<Record<string, (payload?: unknown) => void>>(() => {
+  if (!caps.value.actions || !ctx) return {}
+  const events = props.block.events
+  if (!events) return {}
+  const handlers: Record<string, (payload?: unknown) => void> = {}
+  for (const name of Object.keys(events)) {
+    const actions = events[name]
+    if (!actions?.length) continue
+    handlers[name] = (payload?: unknown) => {
+      void engine.dispatcher
+        .dispatch(actions, ctx, effects, { blockId: props.block.id, event: name })
+        .catch((err) => {
+          host.reportError({
+            message: err instanceof Error ? err.message : String(err),
+            stack: err instanceof Error ? err.stack : undefined,
+            blockId: props.block.id,
+          })
+        })
+    }
+  }
+  return handlers
+})
 
 /** zod validation (SPEC §9). Invalid ⇒ render nothing + warn once. */
 const validation = computed(() => safeParseBlock(props.block))
@@ -134,7 +175,7 @@ if (!valid.value) {
       @mouseleave="onLeave"
     >
       <BlockErrorBoundary :block-id="block.id" :component="block.component" @block-error="onBlockError">
-        <component :is="component" v-bind="finalProps">
+        <component :is="component" v-bind="finalProps" v-on="eventHandlers">
           <!-- Recurse over children (SPEC §8). -->
           <BlockRenderer v-for="child in children" :key="child.id" :block="child" />
         </component>

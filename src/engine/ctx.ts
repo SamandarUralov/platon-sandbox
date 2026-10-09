@@ -6,6 +6,7 @@
  * `ctx` (compiling/running user code) is the logic engine's job (later worker).
  */
 
+import { type InjectionKey, inject } from 'vue'
 import type { Ctx, CtxBlocks, CtxState, CtxUser } from '@/contracts'
 import type { EngineContext } from './engine'
 import { useSandboxStore } from '@/state'
@@ -68,6 +69,14 @@ export function buildCtx(opts: BuildCtxOptions): Ctx {
         /* no-op until the event bus lands (later worker) */
       }),
   }
+}
+
+/** Page-scoped `ctx`, provided by PageRenderer and consumed by BlockRenderer. */
+export const CtxKey: InjectionKey<Ctx> = Symbol('platon.ctx')
+
+/** Inject the current page `ctx`, or undefined outside a page scope. */
+export function useCtx(): Ctx | undefined {
+  return inject(CtxKey, undefined)
 }
 
 function findById(
