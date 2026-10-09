@@ -30,7 +30,20 @@ declare module '@platon-rs/platon-ui-kit' {
   export const TableCell: UiComponent
   export const TableCaption: UiComponent
   export const TableEmpty: UiComponent
+  export const TablePagination: UiComponent
   export const BaseTable: UiComponent
+  // Select composite (trigger/value/content/item) used by the `select` block.
+  export const SelectContent: UiComponent
+  export const SelectItem: UiComponent
+  export const SelectTrigger: UiComponent
+  export const SelectValue: UiComponent
+  export const SelectWrapper: UiComponent
+  // Additional palette atoms.
+  export const DatePicker: UiComponent
+  export const DateRangePicker: UiComponent
+  export const FileUpload: UiComponent
+  export const InputFileUpload: UiComponent
+  export const ImageUpload: UiComponent
   // Other PascalCase atoms exist at runtime and are auto-registered by the
   // registry via `import * as`; they simply aren't individually typed here.
 }

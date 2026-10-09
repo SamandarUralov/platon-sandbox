@@ -18,6 +18,28 @@ import PageHeader from '@/blocks/PageHeader.vue'
 import StatGroup from '@/blocks/StatGroup.vue'
 import DataTable from '@/blocks/DataTable.vue'
 
+// Palette blocks (SPEC §3): semantic blocks + ui-kit atom wrappers.
+import Text from '@/blocks/Text.vue'
+import ImageBlock from '@/blocks/ImageBlock.vue'
+import ButtonBlock from '@/blocks/ButtonBlock.vue'
+import Numbers from '@/blocks/Numbers.vue'
+import TableBlock from '@/blocks/TableBlock.vue'
+import FormBlock from '@/blocks/FormBlock.vue'
+import Pagination from '@/blocks/Pagination.vue'
+import TextInput from '@/blocks/TextInput.vue'
+import SelectInput from '@/blocks/SelectInput.vue'
+import CheckboxInput from '@/blocks/CheckboxInput.vue'
+import RadioGroup from '@/blocks/RadioGroup.vue'
+import SwitchInput from '@/blocks/SwitchInput.vue'
+import DatePickerInput from '@/blocks/DatePickerInput.vue'
+import TextArea from '@/blocks/TextArea.vue'
+import FileUploadInput from '@/blocks/FileUploadInput.vue'
+
+// Layout containers (SPEC §8): render nested children recursively.
+import RowContainer from '@/blocks/RowContainer.vue'
+import ColumnContainer from '@/blocks/ColumnContainer.vue'
+import CardContainer from '@/blocks/CardContainer.vue'
+
 export type RegistryLayer = 'builtin' | 'ui-kit' | 'custom'
 
 export interface RegistryEntry {
@@ -25,11 +47,36 @@ export interface RegistryEntry {
   layer: RegistryLayer
 }
 
-/** Built-in semantic blocks (SPEC §3 reference set). */
+/** Built-in semantic blocks (SPEC §3 reference set + palette). */
 const BUILTINS: Record<string, Component> = {
+  // Reference set (foundation).
   page_header: PageHeader,
   stat_group: StatGroup,
   data_table: DataTable,
+
+  // Display / content blocks.
+  text: Text,
+  image: ImageBlock,
+  button: ButtonBlock,
+  numbers: Numbers,
+  table: TableBlock,
+  pagination: Pagination,
+
+  // Form controls (ui-kit atom wrappers).
+  form: FormBlock,
+  text_input: TextInput,
+  text_area: TextArea,
+  select: SelectInput,
+  checkbox: CheckboxInput,
+  radio_group: RadioGroup,
+  switch: SwitchInput,
+  date_picker: DatePickerInput,
+  file_upload: FileUploadInput,
+
+  // Layout containers (nested children, SPEC §8).
+  row: RowContainer,
+  column: ColumnContainer,
+  card: CardContainer,
 }
 
 export interface ComponentRegistry {
