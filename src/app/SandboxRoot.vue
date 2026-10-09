@@ -2,13 +2,15 @@
 /**
  * Sandbox shell: sidebar menu + topbar + current page (SPEC §5, §7, §8).
  *
- * The role switcher ("Preview as <role>") and bottom Console panel are stubbed
- * minimally here; richer versions are later workers. In Interface mode the
- * sidebar/topbar frame the canvas; page selection swaps the canvas (SPEC §5).
+ * In Interface mode the sidebar/topbar frame the canvas; page selection swaps
+ * the canvas (SPEC §5). In Preview mode the full application chrome — the
+ * role-filtered menu, "Preview as <role>" switcher and CRUD permission matrix —
+ * is delegated to `PreviewShell` (SPEC §7). Both run inside one EngineProvider.
  */
 import { computed } from 'vue'
 import { useSandboxStore } from '@/state'
 import { EngineProvider, PageRenderer } from '@/engine'
+import { PreviewShell } from '@/preview'
 import NavMenu from './NavMenu.vue'
 
 const store = useSandboxStore()
@@ -25,6 +27,10 @@ function navigate(pageId: string) {
 <template>
   <div v-if="meta" class="pl-shell">
     <EngineProvider :key="engineKey" :meta="meta" :mode="store.mode">
+      <!-- Preview mode: full app chrome (role switcher + live filter + CRUD matrix). -->
+      <PreviewShell v-if="store.mode === 'preview'" />
+      <!-- Interface mode: edit-canvas frame. -->
+      <template v-else>
       <aside class="pl-shell__sidebar">
         <div class="pl-shell__brand">{{ meta.name }}</div>
         <NavMenu
@@ -46,6 +52,7 @@ function navigate(pageId: string) {
           <div v-else class="pl-shell__empty">No page to display.</div>
         </main>
       </div>
+      </template>
     </EngineProvider>
   </div>
   <div v-else class="pl-shell__boot">Waiting for project meta…</div>

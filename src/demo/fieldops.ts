@@ -54,10 +54,38 @@ export const fieldOpsMeta: ProjectMeta = {
     activeDepot: 'North',
   },
   global_hooks: [],
+  // Explicit, studio-managed menu tree (SPEC §2 MenuNode). `visible_to` mirrors
+  // the pages so the Preview sidebar filters live per role; the "Operations"
+  // group node demonstrates nested rendering + empty-group dropping.
   menu: [
-    { id: 'm-dashboard', label: 'Dashboard', page: 'dashboard', icon: 'home' },
-    { id: 'm-work-orders', label: 'Work orders', page: 'work_orders', icon: 'clipboard' },
-    { id: 'm-checklist', label: 'Job checklist', page: 'job_checklist', icon: 'check' },
+    {
+      id: 'm-dashboard',
+      label: 'Dashboard',
+      page: 'dashboard',
+      icon: 'home',
+      visible_to: ['admin', 'dispatcher'],
+    },
+    {
+      id: 'm-ops',
+      label: 'Operations',
+      icon: 'layers',
+      children: [
+        {
+          id: 'm-work-orders',
+          label: 'Work orders',
+          page: 'work_orders',
+          icon: 'clipboard',
+          visible_to: ['admin', 'dispatcher', 'technician'],
+        },
+        {
+          id: 'm-checklist',
+          label: 'Job checklist',
+          page: 'job_checklist',
+          icon: 'check',
+          visible_to: ['admin', 'technician', 'customer'],
+        },
+      ],
+    },
   ],
   pages: [
     {
@@ -66,7 +94,8 @@ export const fieldOpsMeta: ProjectMeta = {
       path: '/',
       parent: null,
       in_menu: true,
-      visible_to: [],
+      // Operational overview — managers only (SPEC §7 page-level visible_to).
+      visible_to: ['admin', 'dispatcher'],
       blocks: [
         {
           id: 'dash-header',
@@ -81,6 +110,9 @@ export const fieldOpsMeta: ProjectMeta = {
         {
           id: 'dash-stats',
           component: 'stat_group',
+          // Block-level filter: KPIs are admin-only (dispatcher sees the page
+          // but not these stats).
+          visible_to: ['admin'],
           items: [
             { label: 'Open work orders', value: 12, delta: '+3', deltaType: 'up' },
             { label: 'In progress', value: 7, deltaType: 'neutral' },
@@ -102,7 +134,7 @@ export const fieldOpsMeta: ProjectMeta = {
       path: '/work-orders',
       parent: null,
       in_menu: true,
-      visible_to: [],
+      visible_to: ['admin', 'dispatcher', 'technician'],
       blocks: [
         {
           id: 'wo-header',
@@ -116,6 +148,8 @@ export const fieldOpsMeta: ProjectMeta = {
         {
           id: 'wo-stats',
           component: 'stat_group',
+          // Dispatch KPIs — hidden from technicians (they only work the table).
+          visible_to: ['admin', 'dispatcher'],
           items: [
             { label: 'Unassigned', value: 5, deltaType: 'neutral' },
             { label: 'Assigned', value: 7, deltaType: 'neutral' },
@@ -126,6 +160,13 @@ export const fieldOpsMeta: ProjectMeta = {
           id: 'wo-table',
           component: 'data_table',
           props: { title: 'All work orders' },
+          // Visual CRUD matrix (SPEC §7): dispatchers can create/edit, only
+          // admins can delete, technicians read-only.
+          permissions: {
+            create: ['admin', 'dispatcher'],
+            update: ['admin', 'dispatcher'],
+            delete: ['admin'],
+          },
           query: {
             table: 'work_orders',
             columns: ['id', 'title', 'status', 'priority', 'technician', 'created'],
@@ -139,7 +180,7 @@ export const fieldOpsMeta: ProjectMeta = {
       path: '/checklist',
       parent: null,
       in_menu: true,
-      visible_to: [],
+      visible_to: ['admin', 'technician', 'customer'],
       blocks: [
         {
           id: 'cl-header',
@@ -155,6 +196,13 @@ export const fieldOpsMeta: ProjectMeta = {
           id: 'cl-table',
           component: 'data_table',
           props: { title: 'Checklist items' },
+          // Technicians complete items (create/edit); customers read-only;
+          // only admins delete.
+          permissions: {
+            create: ['admin', 'technician'],
+            update: ['admin', 'technician'],
+            delete: ['admin'],
+          },
           query: { table: 'checklist_items' },
         },
       ],

@@ -6,7 +6,7 @@
  * also readable by user code via `@/theme`.
  */
 
-import { reactive } from 'vue'
+import { reactive, toRaw } from 'vue'
 import type { ThemeMeta } from '@/contracts'
 
 /** Live, reactive token map (populated on meta load). */
@@ -21,8 +21,10 @@ function toCssVar(key: string): string {
 /** Apply theme tokens as CSS variables on `root` (defaults to <html>). */
 export function applyTheme(theme: ThemeMeta | undefined, root?: HTMLElement): void {
   const el = root ?? (typeof document !== 'undefined' ? document.documentElement : null)
-  // Reset reactive mirror.
-  for (const k of Object.keys(tokens)) delete tokens[k]
+  // Reset reactive mirror. Read existing keys through `toRaw` so this function
+  // — which is run inside a `watchEffect` — does NOT subscribe to `tokens` while
+  // it mutates `tokens`, which would make the effect retrigger itself endlessly.
+  for (const k of Object.keys(toRaw(tokens))) delete tokens[k]
   if (!theme?.tokens) return
   for (const [key, value] of Object.entries(theme.tokens)) {
     tokens[key] = value
