@@ -78,8 +78,13 @@ onMounted(() => {
   bridge.send({ type: 'ready', protocolVersion: 1 })
 
   // Standalone demo fallback (SPEC §12): no Studio parent ⇒ seed FieldOps.
+  // `?mode=preview[&role=<role>]` boots the Preview shell directly so the role
+  // switcher / live filter / CRUD matrix are demonstrable on their own.
   if (!bridge.embedded) {
-    store.loadMeta(parseProjectMeta(fieldOpsMeta), { mode: 'interface' })
+    const params = new URLSearchParams(window.location.search)
+    const mode = params.get('mode') === 'preview' ? 'preview' : 'interface'
+    const role = params.get('role')
+    store.loadMeta(parseProjectMeta(fieldOpsMeta), { mode, role })
   }
 })
 

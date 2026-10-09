@@ -1,5 +1,6 @@
+/// <reference types="vitest/config" />
 import { fileURLToPath, URL } from 'node:url'
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 
 // SPEC §4: Vue must load with the RUNTIME COMPILER so custom components and
@@ -30,5 +31,11 @@ export default defineConfig({
     headers: {
       'X-Frame-Options': 'ALLOWALL',
     },
+  },
+  // Vitest (SPEC §11): component + unit tests run in jsdom so Vue renders.
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    include: ['src/**/*.{test,spec}.ts'],
   },
 })
