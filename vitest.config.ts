@@ -2,12 +2,11 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 
-// Unified vitest config for the merged suites (data layer + execution engine).
-// Vue reactivity + the runtime compiler work in Node, so no DOM is needed for the
-// logic/dispatcher/watchdog or data-layer suites; jsdom is available for any
-// future component-mount tests. The Vue plugin lets suites that transitively
-// import `.vue` files (e.g. the registry) load, and the data-layer's pure-TS
-// suites run fine under the same environment.
+// Unified vitest config for all merged suites (data layer, execution engine,
+// built-in block library). The Vue plugin + runtime-compiler alias let suites
+// that transitively import `.vue` files load; jsdom provides the browser surface
+// the block wrappers need; the setup file polyfills APIs ui-kit atoms touch on
+// mount. The data/engine pure-TS suites run fine under the same environment.
 export default defineConfig({
   plugins: [vue()],
   resolve: {
@@ -26,6 +25,8 @@ export default defineConfig({
     // jsdom so suites that transitively import `.vue` SFCs use Vue's client
     // (non-SSR) build; the logic/dispatcher/watchdog + data suites don't touch DOM.
     environment: 'jsdom',
+    globals: true,
+    setupFiles: ['./src/blocks/__tests__/setup.ts'],
     include: ['src/**/*.{test,spec}.ts'],
   },
 })
