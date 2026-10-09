@@ -28,3 +28,10 @@ pnpm-debug.log*
 # Vite / TS caches
 *.tsbuildinfo
 .vite/
+
+# Test output
+test-results/
+playwright-report/
+blob-report/
+.playwright/
+/playwright/.cache/

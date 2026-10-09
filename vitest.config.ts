@@ -1,13 +1,16 @@
+/**
+ * Unified vitest config for ALL merged suites (data layer, execution engine,
+ * built-in blocks, editing/protocol, and the test-harness tests/unit/* suites).
+ *
+ * Mirrors the foundation `vite.config.ts` resolve/define — the `@` alias and the
+ * Vue RUNTIME-COMPILER build (SPEC §4) — so unit tests render engine components
+ * exactly as the app does. Both setup files run (block ui-kit jsdom polyfills +
+ * the harness setup); snapshots resolve next to their specs under __snapshots__.
+ */
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 
-// Unified vitest config for all merged suites (data layer, execution engine,
-// built-in block library, editing/protocol). The Vue plugin + runtime-compiler
-// alias let suites that transitively import `.vue` files load; jsdom provides the
-// browser surface the block/editing component tests need; the setup file
-// polyfills APIs ui-kit atoms touch on mount. Pure-TS suites (data, hit-test,
-// drop-target) run fine under the same environment.
 export default defineConfig({
   plugins: [vue()],
   resolve: {
@@ -23,11 +26,13 @@ export default defineConfig({
     __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
   },
   test: {
-    // jsdom so suites that transitively import `.vue` SFCs use Vue's client
-    // (non-SSR) build; the logic/dispatcher/watchdog + data suites don't touch DOM.
     environment: 'jsdom',
     globals: true,
-    setupFiles: ['./src/blocks/__tests__/setup.ts'],
-    include: ['src/**/*.{test,spec}.ts'],
+    // Co-located suites under src/ plus the harness suites under tests/unit/.
+    include: ['src/**/*.{test,spec}.ts', 'tests/unit/**/*.spec.ts'],
+    setupFiles: ['./src/blocks/__tests__/setup.ts', './tests/unit/setup.ts'],
+    // Snapshots live next to the specs under __snapshots__ (harness convention).
+    resolveSnapshotPath: (testPath, snapExtension) =>
+      testPath.replace(/\/([^/]+)$/, '/__snapshots__/$1') + snapExtension,
   },
 })

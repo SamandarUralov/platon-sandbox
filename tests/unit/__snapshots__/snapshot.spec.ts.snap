@@ -1,0 +1,433 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FieldOps golden render (Interface mode) > renders the "dashboard" page tree 1`] = `
+"<div data-v-44a065fb="" class="pl-page">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="dash-header" data-component="page_header">
+    <header data-v-e94bf260="" data-v-2c101483="" class="pl-page-header">
+      <div data-v-e94bf260="" class="pl-page-header__text">
+        <div data-v-e94bf260="" class="pl-page-header__titlerow">
+          <h1 data-v-e94bf260="" class="pl-page-header__title">Dashboard</h1><span data-v-e94bf260="" class="inline-flex items-center justify-center rounded-full font-medium transition-colors bg-secondary text-secondary-foreground h-5 min-w-5 px-1.5 text-xs">FieldOps</span>
+        </div>
+        <p data-v-e94bf260="" class="pl-page-header__subtitle">Live overview of field operations</p>
+      </div>
+      <div data-v-e94bf260="" class="pl-page-header__actions"><button data-v-e94bf260="" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 text-sm rounded-md">
+          <!---->New work order
+          <!---->
+          <!---->
+        </button><button data-v-e94bf260="" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 text-sm rounded-md">
+          <!---->Export
+          <!---->
+          <!---->
+        </button></div>
+    </header>
+  </div>
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="dash-stats" data-component="stat_group">
+    <div data-v-01beda8f="" data-v-2c101483="" class="pl-stat-group">
+      <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Open work orders</span><span data-v-01beda8f="" class="pl-stat__value">12</span>
+        <div data-v-01beda8f="" class="pl-stat__meta"><span data-v-01beda8f="" class="inline-flex items-center justify-center rounded-full font-medium transition-colors bg-success text-success-foreground h-5 min-w-5 px-1.5 text-xs">+3</span>
+          <!--v-if-->
+        </div>
+      </div>
+      <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">In progress</span><span data-v-01beda8f="" class="pl-stat__value">7</span>
+        <!--v-if-->
+      </div>
+      <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Completed today</span><span data-v-01beda8f="" class="pl-stat__value">24</span>
+        <div data-v-01beda8f="" class="pl-stat__meta"><span data-v-01beda8f="" class="inline-flex items-center justify-center rounded-full font-medium transition-colors bg-success text-success-foreground h-5 min-w-5 px-1.5 text-xs">+8</span>
+          <!--v-if-->
+        </div>
+      </div>
+      <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Overdue</span><span data-v-01beda8f="" class="pl-stat__value">3</span>
+        <div data-v-01beda8f="" class="pl-stat__meta"><span data-v-01beda8f="" class="inline-flex items-center justify-center rounded-full font-medium transition-colors bg-error text-error-foreground h-5 min-w-5 px-1.5 text-xs">-1</span>
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="dash-recent" data-component="data_table">
+    <section data-v-16177e6e="" data-v-2c101483="" class="pl-data-table" count="8">
+      <h3 data-v-16177e6e="" class="pl-data-table__title">Recent work orders</h3>
+      <div data-v-16177e6e="" class="relative w-full overflow-auto rounded-m border border-background-muted font-sans text-sm leading-[1.2] text-text-black-1">
+        <table class="w-full caption-bottom border-separate border-spacing-0 pl-data-table__table">
+          <thead data-v-16177e6e="" class="bg-background-light">
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Id</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Title</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Status</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Priority</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Technician</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Created</th>
+            </tr>
+          </thead>
+          <tbody data-v-16177e6e="" class="[&amp;_tr:last-child>td]:border-b-0">
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">1</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">articulus chirographum</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">in_progress</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">medium</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Wiley Buckridge</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-28</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">vorago decipio</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Leonie Dibbert</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-29</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">3</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">atrox cupiditate avarus</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">done</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Jan Langosh</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-10-01</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">4</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">ascisco antepono corrupti suadeo</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">open</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">medium</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Fleta Kulas PhD</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-27</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">5</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">vulpes caterva accedo</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">open</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Evans Anderson</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-29</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">6</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">sophismata vere</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">open</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Dortha Dare</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-23</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">7</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">textor depromo surculus</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">medium</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Talon Koss V</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-25</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">8</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">vindico laboriosam</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">low</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Kate Paucek</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-16</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--v-if-->
+    </section>
+  </div>
+</div>"
+`;
+
+exports[`FieldOps golden render (Interface mode) > renders the "job_checklist" page tree 1`] = `
+"<div data-v-44a065fb="" class="pl-page">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="cl-header" data-component="page_header">
+    <header data-v-e94bf260="" data-v-2c101483="" class="pl-page-header">
+      <div data-v-e94bf260="" class="pl-page-header__text">
+        <div data-v-e94bf260="" class="pl-page-header__titlerow">
+          <h1 data-v-e94bf260="" class="pl-page-header__title">Job checklist</h1><span data-v-e94bf260="" class="inline-flex items-center justify-center rounded-full font-medium transition-colors bg-secondary text-secondary-foreground h-5 min-w-5 px-1.5 text-xs">Technician</span>
+        </div>
+        <p data-v-e94bf260="" class="pl-page-header__subtitle">Per-visit task completion</p>
+      </div>
+      <!--v-if-->
+    </header>
+  </div>
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="cl-table" data-component="data_table">
+    <section data-v-16177e6e="" data-v-2c101483="" class="pl-data-table" count="8">
+      <h3 data-v-16177e6e="" class="pl-data-table__title">Checklist items</h3>
+      <div data-v-16177e6e="" class="relative w-full overflow-auto rounded-m border border-background-muted font-sans text-sm leading-[1.2] text-text-black-1">
+        <table class="w-full caption-bottom border-separate border-spacing-0 pl-data-table__table">
+          <thead data-v-16177e6e="" class="bg-background-light">
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Id</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Task</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Status</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Assignee</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Notes</th>
+            </tr>
+          </thead>
+          <tbody data-v-16177e6e="" class="[&amp;_tr:last-child>td]:border-b-0">
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">1</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">tabgo</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Ryder Grimes-Hudson</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Addo conscendo deorsum administratio veritas.</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">surgo</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Donna Ferry</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Video nobis audax audentia confido damnatio.</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">3</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">aestus</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">done</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Maia Ruecker</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Condico nisi astrum tyrannus cerno tam magnam velut infit.</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">4</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">acies</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">open</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Cecil Mueller</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Velociter celebrer super deorsum cicuta adsum bardus rerum circumvenio decipio.</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">5</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">coniuratio</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">in_progress</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Ali Nitzsche</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Cras doloremque nesciunt tutis subvenio quo admoneo adipisci.</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">6</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">eveniet</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Dominick Jast</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Cicuta terminatio ulterius incidunt surculus.</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">7</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">damnatio</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Dr. Nick Reichel</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Audeo sto vulariter vergo uredo adipiscor absens tamquam.</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">8</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">tabella</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">done</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Candida Jacobson</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Adficio alius amoveo strenuus provident natus trepide tamdiu.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--v-if-->
+    </section>
+  </div>
+</div>"
+`;
+
+exports[`FieldOps golden render (Interface mode) > renders the "work_orders" page tree 1`] = `
+"<div data-v-44a065fb="" class="pl-page">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="wo-header" data-component="page_header">
+    <header data-v-e94bf260="" data-v-2c101483="" class="pl-page-header">
+      <div data-v-e94bf260="" class="pl-page-header__text">
+        <div data-v-e94bf260="" class="pl-page-header__titlerow">
+          <h1 data-v-e94bf260="" class="pl-page-header__title">Work orders</h1>
+          <!--v-if-->
+        </div>
+        <p data-v-e94bf260="" class="pl-page-header__subtitle">Dispatch, assign and track field jobs</p>
+      </div>
+      <div data-v-e94bf260="" class="pl-page-header__actions"><button data-v-e94bf260="" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 text-sm rounded-md">
+          <!---->New work order
+          <!---->
+          <!---->
+        </button></div>
+    </header>
+  </div>
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="wo-stats" data-component="stat_group">
+    <div data-v-01beda8f="" data-v-2c101483="" class="pl-stat-group">
+      <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Unassigned</span><span data-v-01beda8f="" class="pl-stat__value">5</span>
+        <!--v-if-->
+      </div>
+      <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Assigned</span><span data-v-01beda8f="" class="pl-stat__value">7</span>
+        <!--v-if-->
+      </div>
+      <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Urgent</span><span data-v-01beda8f="" class="pl-stat__value">2</span>
+        <div data-v-01beda8f="" class="pl-stat__meta"><span data-v-01beda8f="" class="inline-flex items-center justify-center rounded-full font-medium transition-colors bg-error text-error-foreground h-5 min-w-5 px-1.5 text-xs">!</span>
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="wo-table" data-component="data_table">
+    <section data-v-16177e6e="" data-v-2c101483="" class="pl-data-table" count="8">
+      <h3 data-v-16177e6e="" class="pl-data-table__title">All work orders</h3>
+      <div data-v-16177e6e="" class="relative w-full overflow-auto rounded-m border border-background-muted font-sans text-sm leading-[1.2] text-text-black-1">
+        <table class="w-full caption-bottom border-separate border-spacing-0 pl-data-table__table">
+          <thead data-v-16177e6e="" class="bg-background-light">
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Id</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Title</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Status</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Priority</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Technician</th>
+              <th data-v-16177e6e="" class="relative p-3 text-center align-middle font-bold border-b border-r border-background-muted bg-background-light text-sm leading-[1.2] text-text-black-1 last:border-r-0 whitespace-normal break-normal hover:bg-background-light [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Created</th>
+            </tr>
+          </thead>
+          <tbody data-v-16177e6e="" class="[&amp;_tr:last-child>td]:border-b-0">
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">1</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">articulus chirographum</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">in_progress</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">medium</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Wiley Buckridge</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-28</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">vorago decipio</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Leonie Dibbert</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-29</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">3</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">atrox cupiditate avarus</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">done</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Jan Langosh</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-10-01</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">4</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">ascisco antepono corrupti suadeo</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">open</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">medium</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Fleta Kulas PhD</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-27</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">5</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">vulpes caterva accedo</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">open</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Evans Anderson</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-29</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">6</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">sophismata vere</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">open</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Dortha Dare</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-23</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">7</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">textor depromo surculus</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">medium</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Talon Koss V</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-25</td>
+            </tr>
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">8</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">vindico laboriosam</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">low</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Kate Paucek</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-16</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--v-if-->
+    </section>
+  </div>
+</div>"
+`;
+
+exports[`Preview mode golden render > leaves query-bound tables empty in Preview (live data is a later worker) 1`] = `
+"<div data-v-44a065fb="" class="pl-page">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block" data-block-id="dash-header" data-component="page_header">
+    <header data-v-e94bf260="" data-v-2c101483="" class="pl-page-header">
+      <div data-v-e94bf260="" class="pl-page-header__text">
+        <div data-v-e94bf260="" class="pl-page-header__titlerow">
+          <h1 data-v-e94bf260="" class="pl-page-header__title">Dashboard</h1><span data-v-e94bf260="" class="inline-flex items-center justify-center rounded-full font-medium transition-colors bg-secondary text-secondary-foreground h-5 min-w-5 px-1.5 text-xs">FieldOps</span>
+        </div>
+        <p data-v-e94bf260="" class="pl-page-header__subtitle">Live overview of field operations</p>
+      </div>
+      <div data-v-e94bf260="" class="pl-page-header__actions"><button data-v-e94bf260="" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 text-sm rounded-md">
+          <!---->New work order
+          <!---->
+          <!---->
+        </button><button data-v-e94bf260="" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 text-sm rounded-md">
+          <!---->Export
+          <!---->
+          <!---->
+        </button></div>
+    </header>
+  </div>
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block" data-block-id="dash-stats" data-component="stat_group">
+    <div data-v-01beda8f="" data-v-2c101483="" class="pl-stat-group">
+      <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Open work orders</span><span data-v-01beda8f="" class="pl-stat__value">12</span>
+        <div data-v-01beda8f="" class="pl-stat__meta"><span data-v-01beda8f="" class="inline-flex items-center justify-center rounded-full font-medium transition-colors bg-success text-success-foreground h-5 min-w-5 px-1.5 text-xs">+3</span>
+          <!--v-if-->
+        </div>
+      </div>
+      <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">In progress</span><span data-v-01beda8f="" class="pl-stat__value">7</span>
+        <!--v-if-->
+      </div>
+      <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Completed today</span><span data-v-01beda8f="" class="pl-stat__value">24</span>
+        <div data-v-01beda8f="" class="pl-stat__meta"><span data-v-01beda8f="" class="inline-flex items-center justify-center rounded-full font-medium transition-colors bg-success text-success-foreground h-5 min-w-5 px-1.5 text-xs">+8</span>
+          <!--v-if-->
+        </div>
+      </div>
+      <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Overdue</span><span data-v-01beda8f="" class="pl-stat__value">3</span>
+        <div data-v-01beda8f="" class="pl-stat__meta"><span data-v-01beda8f="" class="inline-flex items-center justify-center rounded-full font-medium transition-colors bg-error text-error-foreground h-5 min-w-5 px-1.5 text-xs">-1</span>
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block" data-block-id="dash-recent" data-component="data_table">
+    <section data-v-16177e6e="" data-v-2c101483="" class="pl-data-table">
+      <h3 data-v-16177e6e="" class="pl-data-table__title">Recent work orders</h3>
+      <div data-v-16177e6e="" class="relative w-full overflow-auto rounded-m border border-background-muted font-sans text-sm leading-[1.2] text-text-black-1">
+        <table class="w-full caption-bottom border-separate border-spacing-0 pl-data-table__table">
+          <thead data-v-16177e6e="" class="bg-background-light">
+            <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted"></tr>
+          </thead>
+          <tbody data-v-16177e6e="" class="[&amp;_tr:last-child>td]:border-b-0"></tbody>
+        </table>
+      </div>
+      <p data-v-16177e6e="" class="pl-data-table__empty">No data</p>
+    </section>
+  </div>
+</div>"
+`;
+
+exports[`edge-case golden render > renders an empty page without crashing 1`] = `"<div data-v-44a065fb="" class="pl-page"></div>"`;
+
+exports[`edge-case golden render > renders deeply nested children recursively 1`] = `
+"<div data-v-2c101483="" class="pl-block pl-block--overlay" data-block-id="outer" data-component="container">
+  <div data-v-2c101483="" class="pl-slot-container">
+    <!-- Recurse over children (SPEC §8). -->
+    <div data-v-2c101483="" class="pl-block pl-block--overlay" data-block-id="inner" data-component="stat_group">
+      <div data-v-01beda8f="" data-v-2c101483="" class="pl-stat-group">
+        <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Nested stat</span><span data-v-01beda8f="" class="pl-stat__value">42</span>
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`edge-case golden render > renders the Unknown placeholder for an unregistered component 1`] = `
+"<div data-v-44a065fb="" class="pl-page">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="b1" data-component="definitely_not_a_real_component">
+    <div data-v-f622c6bc="" data-v-2c101483="" class="pl-unknown" role="alert"><span data-v-f622c6bc="" class="pl-unknown__badge">Unknown component</span><code data-v-f622c6bc="" class="pl-unknown__name">definitely_not_a_real_component</code><span data-v-f622c6bc="" class="pl-unknown__id">block: b1</span></div>
+  </div>
+</div>"
+`;
