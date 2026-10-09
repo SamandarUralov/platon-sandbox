@@ -3,10 +3,11 @@ import { defineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 
 // Unified vitest config for all merged suites (data layer, execution engine,
-// built-in block library). The Vue plugin + runtime-compiler alias let suites
-// that transitively import `.vue` files load; jsdom provides the browser surface
-// the block wrappers need; the setup file polyfills APIs ui-kit atoms touch on
-// mount. The data/engine pure-TS suites run fine under the same environment.
+// built-in block library, editing/protocol). The Vue plugin + runtime-compiler
+// alias let suites that transitively import `.vue` files load; jsdom provides the
+// browser surface the block/editing component tests need; the setup file
+// polyfills APIs ui-kit atoms touch on mount. Pure-TS suites (data, hit-test,
+// drop-target) run fine under the same environment.
 export default defineConfig({
   plugins: [vue()],
   resolve: {

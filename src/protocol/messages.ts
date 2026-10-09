@@ -58,6 +58,26 @@ export interface NavigateMessage {
   pageId: string
 }
 
+/**
+ * Live drag position forwarded from the Studio (edit overlay, Interface only).
+ *
+ * Cross-origin iframes cannot read the drag `dataTransfer` during `dragover`,
+ * so the Studio forwards the pointer (and what is being dragged) here; the
+ * Sandbox resolves the drop target against its tree and replies with
+ * `drop-target`. `point` is in the Sandbox iframe's viewport coordinates.
+ */
+export interface DragOverMessage {
+  type: 'drag-over'
+  point: { x: number; y: number }
+  /** What is being dragged: a new block (`component`) or an existing block. */
+  draggable?: { component?: string; blockId?: string }
+}
+
+/** Drag ended/cancelled; the Sandbox should clear any drop indicator. */
+export interface DragEndMessage {
+  type: 'drag-end'
+}
+
 export type StudioToSandboxMessage =
   | InitMessage
   | PatchMessage
@@ -65,6 +85,8 @@ export type StudioToSandboxMessage =
   | SetRoleMessage
   | SelectBlockMessage
   | NavigateMessage
+  | DragOverMessage
+  | DragEndMessage
 
 /* ------------------------------------------------------------------ *
  * Sandbox → Studio
@@ -99,6 +121,11 @@ export interface DropTargetMessage {
   rect?: { x: number; y: number; width: number; height: number }
 }
 
+/** No valid drop target under the pointer (or drag ended): hide the indicator. */
+export interface DropClearMessage {
+  type: 'drop-clear'
+}
+
 /** A compile/runtime error surfaced from the sandbox (SPEC §9). */
 export interface ErrorMessage {
   type: 'error'
@@ -120,6 +147,7 @@ export type SandboxToStudioMessage =
   | BlockSelectedMessage
   | BlockHoverMessage
   | DropTargetMessage
+  | DropClearMessage
   | ErrorMessage
   | ConsoleMessage
 

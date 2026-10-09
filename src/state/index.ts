@@ -20,36 +20,57 @@ export interface ConsoleEntry {
   source?: string
 }
 
-/** Walk every block in a page (depth-first), yielding each node. */
-function* walkBlocks(blocks: Block[]): Generator<Block> {
-  for (const b of blocks) {
-    yield b
-    if (b.children?.length) yield* walkBlocks(b.children)
+/**
+ * Immutably set a dot/array path, cloning only the nodes along the path.
+ *
+ * Returns a NEW container with fresh object/array identities down to the
+ * target, leaving untouched branches shared by reference. New identities are
+ * what make a `shallowRef`-held meta tree re-render on patch: the renderer
+ * sees a changed `block` reference and recomputes (see `applyPatch`).
+ */
+function setIn(container: unknown, parts: string[], value: unknown): unknown {
+  if (parts.length === 0) return value
+  const [head, ...rest] = parts
+
+  if (Array.isArray(container)) {
+    const idx = Number(head)
+    const copy = container.slice()
+    copy[idx] = setIn(copy[idx], rest, value)
+    return copy
   }
+
+  const obj: Record<string, unknown> =
+    container && typeof container === 'object' ? { ...(container as Record<string, unknown>) } : {}
+  obj[head] = setIn(obj[head], rest, value)
+  return obj
 }
 
-/** Find a block by id across all pages. */
-function findBlock(meta: ProjectMeta, blockId: string): Block | null {
-  for (const page of meta.pages) {
-    for (const b of walkBlocks(page.blocks)) {
-      if (b.id === blockId) return b
+/**
+ * Rebuild a block tree, replacing the matching block via `apply`. Ancestors on
+ * the path get new identities (structural sharing elsewhere). `changed`
+ * reports whether the target was found.
+ */
+function rebuildBlocks(
+  blocks: Block[],
+  blockId: string,
+  apply: (block: Block) => Block,
+): { blocks: Block[]; changed: boolean } {
+  let changed = false
+  const next = blocks.map((b) => {
+    if (b.id === blockId) {
+      changed = true
+      return apply(b)
     }
-  }
-  return null
-}
-
-/** Set a dot/array path on an object, creating intermediate objects. */
-function setPath(target: Record<string, unknown>, path: string, value: unknown): void {
-  const parts = path.split('.').filter(Boolean)
-  if (!parts.length) return
-  let cur: Record<string, unknown> = target
-  for (let i = 0; i < parts.length - 1; i++) {
-    const key = parts[i]
-    const next = cur[key]
-    if (next == null || typeof next !== 'object') cur[key] = {}
-    cur = cur[key] as Record<string, unknown>
-  }
-  cur[parts[parts.length - 1]] = value
+    if (b.children?.length) {
+      const r = rebuildBlocks(b.children, blockId, apply)
+      if (r.changed) {
+        changed = true
+        return { ...b, children: r.blocks }
+      }
+    }
+    return b
+  })
+  return { blocks: changed ? next : blocks, changed }
 }
 
 export const useSandboxStore = defineStore('platon-sandbox', () => {
@@ -85,11 +106,24 @@ export const useSandboxStore = defineStore('platon-sandbox', () => {
 
   function applyPatch(patch: BlockPatch): boolean {
     if (!meta.value) return false
-    const block = findBlock(meta.value, patch.blockId)
-    if (!block) return false
-    setPath(block as unknown as Record<string, unknown>, patch.path, patch.value)
-    // Re-tag the shallowRef so dependents relying on identity refresh too.
-    meta.value = { ...meta.value }
+    const parts = patch.path.split('.').filter(Boolean)
+    if (!parts.length) return false
+
+    const apply = (block: Block): Block =>
+      setIn(block, parts, patch.value) as Block
+
+    let found = false
+    const pages = meta.value.pages.map((page) => {
+      if (found) return page
+      const r = rebuildBlocks(page.blocks, patch.blockId, apply)
+      if (!r.changed) return page
+      found = true
+      return { ...page, blocks: r.blocks }
+    })
+    if (!found) return false
+
+    // New identities down the path ⇒ the shallowRef meta re-renders reactively.
+    meta.value = { ...meta.value, pages }
     return true
   }
 
