@@ -40,6 +40,34 @@ import RowContainer from '@/blocks/RowContainer.vue'
 import ColumnContainer from '@/blocks/ColumnContainer.vue'
 import CardContainer from '@/blocks/CardContainer.vue'
 
+// Studio "UI kit" blocks: sent by Studio under their own type name with the definition props.
+import DividerBlock from '@/blocks/DividerBlock.vue'
+import SpacerBlock from '@/blocks/SpacerBlock.vue'
+import BadgeBlock from '@/blocks/BadgeBlock.vue'
+import BreadcrumbBlock from '@/blocks/BreadcrumbBlock.vue'
+import EmptyState from '@/blocks/EmptyState.vue'
+import AlertBlock from '@/blocks/AlertBlock.vue'
+import StepsBlock from '@/blocks/StepsBlock.vue'
+import ProgressBlock from '@/blocks/ProgressBlock.vue'
+import TimelineBlock from '@/blocks/TimelineBlock.vue'
+import CalendarBlock from '@/blocks/CalendarBlock.vue'
+import SegmentedBlock from '@/blocks/SegmentedBlock.vue'
+import RichTextBlock from '@/blocks/RichTextBlock.vue'
+import GaugeBlock from '@/blocks/GaugeBlock.vue'
+import ListBlock from '@/blocks/ListBlock.vue'
+import DetailBlock from '@/blocks/DetailBlock.vue'
+import BarChart from '@/blocks/BarChart.vue'
+import LineChart from '@/blocks/LineChart.vue'
+import AreaChart from '@/blocks/AreaChart.vue'
+import DonutChart from '@/blocks/DonutChart.vue'
+import PieChart from '@/blocks/PieChart.vue'
+import HBarChart from '@/blocks/HBarChart.vue'
+import StackedChart from '@/blocks/StackedChart.vue'
+import FunnelChart from '@/blocks/FunnelChart.vue'
+import ScatterChart from '@/blocks/ScatterChart.vue'
+import TabsBlock from '@/blocks/TabsBlock.vue'
+import AccordionBlock from '@/blocks/AccordionBlock.vue'
+
 export type RegistryLayer = 'builtin' | 'ui-kit' | 'custom'
 
 export interface RegistryEntry {
@@ -77,6 +105,40 @@ const BUILTINS: Record<string, Component> = {
   row: RowContainer,
   column: ColumnContainer,
   card: CardContainer,
+
+  // Studio UI kit: display / navigation / form widgets.
+  divider: DividerBlock,
+  spacer: SpacerBlock,
+  badge: BadgeBlock,
+  breadcrumb: BreadcrumbBlock,
+  empty: EmptyState,
+  alert: AlertBlock,
+  steps: StepsBlock,
+  progress: ProgressBlock,
+  timeline: TimelineBlock,
+  calendar: CalendarBlock,
+  segmented: SegmentedBlock,
+  richtext: RichTextBlock,
+  gauge: GaugeBlock,
+
+  // Studio UI kit: data-bound records (rows injected from `query`, sample data otherwise).
+  list: ListBlock,
+  detail: DetailBlock,
+
+  // Studio UI kit: charts (grouped counts of `rows` by `groupBy`, sample data otherwise).
+  bar: BarChart,
+  line: LineChart,
+  area: AreaChart,
+  donut: DonutChart,
+  pie: PieChart,
+  hbar: HBarChart,
+  stacked: StackedChart,
+  funnel: FunnelChart,
+  scatter: ScatterChart,
+
+  // Studio UI kit: containers with one child `column` per panel.
+  tabs: TabsBlock,
+  accordion: AccordionBlock,
 }
 
 export interface ComponentRegistry {

@@ -122,6 +122,30 @@ watch(
   },
 )
 
+// The Studio draws the selected block's toolbar over the iframe, so it needs that block's rect.
+// Layout changes (re-init after an edit, images loading, resize) move it, hence the observer.
+let lastRect = ''
+let rectFrame = 0
+let rectObserver: ResizeObserver | null = null
+function reportSelectedRect() {
+  rectFrame = 0
+  const id = capabilitiesFor(store.mode).editOverlay ? store.selectedBlockId : null
+  const el = id ? document.querySelector<HTMLElement>(`[data-block-id="${CSS.escape(id)}"]`) : null
+  const r = el?.getBoundingClientRect()
+  const rect = r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null
+  const key = JSON.stringify([id, rect])
+  if (key === lastRect) return
+  lastRect = key
+  bridge.send({ type: 'block-rect', blockId: id, rect })
+}
+function scheduleRect() {
+  if (!rectFrame) rectFrame = requestAnimationFrame(reportSelectedRect)
+}
+watch(() => [store.selectedBlockId, store.meta, store.currentPage?.id, store.mode], async () => {
+  await nextTick()
+  scheduleRect()
+})
+
 function measureCanvasRoot() {
   const el = document.querySelector<HTMLElement>('[data-pl-canvas]')
   if (!el) return undefined
@@ -143,6 +167,13 @@ onMounted(() => {
     win: window,
   })
 
+  if (typeof ResizeObserver !== 'undefined') {
+    rectObserver = new ResizeObserver(scheduleRect)
+    rectObserver.observe(document.body)
+  }
+  window.addEventListener('scroll', scheduleRect, { capture: true, passive: true })
+  window.addEventListener('resize', scheduleRect)
+
   // Standalone demo fallback (SPEC §12): no Studio parent ⇒ seed FieldOps.
   // `?mode=preview[&role=<role>]` boots the Preview shell directly so the role
   // switcher / live filter / CRUD matrix are demonstrable on their own.
@@ -158,6 +189,10 @@ onBeforeUnmount(() => {
   unsubscribe?.()
   disposeOverlay?.()
   sizeObserver?.disconnect()
+  rectObserver?.disconnect()
+  if (rectFrame) cancelAnimationFrame(rectFrame)
+  window.removeEventListener('scroll', scheduleRect, { capture: true })
+  window.removeEventListener('resize', scheduleRect)
   bridge.stop()
 })
 </script>

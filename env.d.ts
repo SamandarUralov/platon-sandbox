@@ -49,6 +49,11 @@ declare module '@platon-rs/platon-ui-kit' {
   export const FileUpload: UiComponent
   export const InputFileUpload: UiComponent
   export const ImageUpload: UiComponent
+  // Studio UI kit blocks.
+  export const MultiselectButton: UiComponent
+  export const RichTextEditor: UiComponent
+  export const Tabs: UiComponent
+  export const TabsContainer: UiComponent
   // Other PascalCase atoms exist at runtime and are auto-registered by the
   // registry via `import * as`; they simply aren't individually typed here.
 }

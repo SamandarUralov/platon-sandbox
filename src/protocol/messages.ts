@@ -121,6 +121,16 @@ export interface BlockHoverMessage {
 }
 
 /**
+ * Where the selected block sits in the viewport (edit overlay, Interface only), so the Studio can
+ * draw its block toolbar over the iframe. Re-sent when the layout moves it; `rect` null = gone.
+ */
+export interface BlockRectMessage {
+  type: 'block-rect'
+  blockId: string | null
+  rect: { x: number; y: number; width: number; height: number } | null
+}
+
+/**
  * Drag-over a potential drop location (edit overlay). `index` is the insertion
  * index within the parent's children.
  */
@@ -189,6 +199,7 @@ export type SandboxToStudioMessage =
   | ReadyMessage
   | BlockSelectedMessage
   | BlockHoverMessage
+  | BlockRectMessage
   | DropTargetMessage
   | DropClearMessage
   | DropMessage
