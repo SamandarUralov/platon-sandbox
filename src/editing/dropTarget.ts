@@ -31,6 +31,8 @@ export interface DropTarget {
   index: number
   /** Indicator rect for the insertion line/gap, when it can be computed. */
   rect?: Rect
+  /** Rect of the container the block lands in, so the host can highlight it. */
+  parentRect?: Rect
 }
 
 export interface ResolveDropOptions {
@@ -90,7 +92,10 @@ export function resolveDropTarget(
   const index = insertionIndex(children, rects, point, orientation)
   const rect = indicatorRect(children, rects, index, best.rect, orientation)
 
-  return rect ? { parentId: best.id, index, rect } : { parentId: best.id, index }
+  const target: DropTarget = { parentId: best.id, index }
+  if (rect) target.rect = rect
+  if (best.rect) target.parentRect = best.rect
+  return target
 }
 
 function childrenById(

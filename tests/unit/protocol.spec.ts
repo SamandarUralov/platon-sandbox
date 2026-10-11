@@ -12,6 +12,8 @@ import {
   PROTOCOL_CHANNEL,
   PROTOCOL_VERSION,
   SandboxBridge,
+  allowedStudioOrigins,
+  resolveStudioOrigin,
   type StudioToSandboxMessage,
   type SandboxToStudioMessage,
   unwrap,
@@ -76,6 +78,42 @@ describe('SandboxBridge', () => {
     expect(handler).toHaveBeenCalledTimes(1)
     expect(handler).toHaveBeenCalledWith(init)
     bridge.stop()
+  })
+})
+
+describe('Studio origin', () => {
+  const allowed = allowedStudioOrigins('http://studio.test, http://other.test/', 'http://sandbox.test')
+
+  it('builds the allowlist from env plus the own origin', () => {
+    expect(allowed).toEqual(['http://studio.test', 'http://other.test', 'http://sandbox.test'])
+  })
+
+  it('accepts a listed ?studioOrigin and rejects anything else', () => {
+    expect(resolveStudioOrigin('?studioOrigin=http://studio.test', allowed)).toBe('http://studio.test')
+    expect(resolveStudioOrigin('?studioOrigin=http://evil.test', allowed)).toBeNull()
+  })
+
+  it('posts only to the resolved origin and drops messages from others', () => {
+    const postMessage = vi.fn()
+    const bridge = new SandboxBridge({ target: { postMessage } as unknown as Window, targetOrigin: 'http://studio.test' })
+    bridge.send({ type: 'ready', protocolVersion: PROTOCOL_VERSION })
+    expect(postMessage.mock.calls[0][1]).toBe('http://studio.test')
+
+    bridge.start()
+    const handler = vi.fn()
+    bridge.onStudioMessage(handler)
+    const msg: StudioToSandboxMessage = { type: 'navigate', pageId: 'x' }
+    window.dispatchEvent(new MessageEvent('message', { data: wrap(msg), origin: 'http://evil.test' }))
+    window.dispatchEvent(new MessageEvent('message', { data: wrap(msg), origin: 'http://studio.test' }))
+    expect(handler).toHaveBeenCalledTimes(1)
+    bridge.stop()
+  })
+
+  it('stays inert when the origin is not allowed', () => {
+    const postMessage = vi.fn()
+    const bridge = new SandboxBridge({ target: { postMessage } as unknown as Window, targetOrigin: null })
+    bridge.send({ type: 'ready', protocolVersion: PROTOCOL_VERSION })
+    expect(postMessage).not.toHaveBeenCalled()
   })
 })
 

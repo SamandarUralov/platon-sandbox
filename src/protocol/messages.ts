@@ -7,7 +7,7 @@
  * page's own postMessage traffic can be filtered out.
  */
 
-import type { BlockPatch, Mode, ProjectMeta } from '@/contracts'
+import type { BlockPatch, DataMode, Mode, ProjectMeta } from '@/contracts'
 
 export const PROTOCOL_VERSION = 1 as const
 
@@ -26,6 +26,16 @@ export interface InitMessage {
   /** Optional initial page + role to open on. */
   pageId?: string
   role?: string | null
+  /**
+   * Data source override. Defaults by mode (Interface = mock, Preview = live);
+   * `mock` lets a Studio without a backend preview against seeded rows.
+   */
+  data?: DataMode
+  /**
+   * Size the document to its content (no viewport min-height) and report it via
+   * `content-size`, so the Studio can grow the iframe and scroll/zoom it itself.
+   */
+  fit?: boolean
 }
 
 /** Incremental JSON patch on edit (SPEC §1). */
@@ -119,6 +129,8 @@ export interface DropTargetMessage {
   parentId: string | null
   index: number
   rect?: { x: number; y: number; width: number; height: number }
+  /** The receiving container's rect (page canvas for the root). */
+  parentRect?: { x: number; y: number; width: number; height: number }
 }
 
 /** No valid drop target under the pointer (or drag ended): hide the indicator. */
@@ -142,12 +154,47 @@ export interface ConsoleMessage {
   args: unknown[]
 }
 
+/**
+ * A drag was released over the canvas (edit overlay, Interface only). The
+ * Studio owns the edit, so it combines this location with what it was dragging:
+ * a palette item it started itself, or `source.blockId` for a block dragged
+ * inside the Sandbox.
+ */
+export interface DropMessage {
+  type: 'drop'
+  parentId: string | null
+  index: number
+  source?: { blockId?: string }
+}
+
+/** Document content height changed (sent only when `init.fit` is set). */
+export interface ContentSizeMessage {
+  type: 'content-size'
+  height: number
+}
+
+/** The Sandbox moved to another page on its own (menu click, `navigate` action). */
+export interface PageChangedMessage {
+  type: 'page-changed'
+  pageId: string
+}
+
+/** The in-sandbox "Preview as" switcher changed the role. */
+export interface RoleChangedMessage {
+  type: 'role-changed'
+  role: string | null
+}
+
 export type SandboxToStudioMessage =
   | ReadyMessage
   | BlockSelectedMessage
   | BlockHoverMessage
   | DropTargetMessage
   | DropClearMessage
+  | DropMessage
+  | ContentSizeMessage
+  | PageChangedMessage
+  | RoleChangedMessage
   | ErrorMessage
   | ConsoleMessage
 

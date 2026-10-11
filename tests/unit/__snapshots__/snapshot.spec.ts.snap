@@ -2,7 +2,7 @@
 
 exports[`FieldOps golden render (Interface mode) > renders the "dashboard" page tree 1`] = `
 "<div data-v-44a065fb="" class="pl-page">
-  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="dash-header" data-component="page_header">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="dash-header" data-component="page_header" draggable="true">
     <header data-v-e94bf260="" data-v-2c101483="" class="pl-page-header">
       <div data-v-e94bf260="" class="pl-page-header__text">
         <div data-v-e94bf260="" class="pl-page-header__titlerow">
@@ -21,7 +21,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "dashboard" page 
         </button></div>
     </header>
   </div>
-  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="dash-stats" data-component="stat_group">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="dash-stats" data-component="stat_group" draggable="true">
     <div data-v-01beda8f="" data-v-2c101483="" class="pl-stat-group">
       <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Open work orders</span><span data-v-01beda8f="" class="pl-stat__value">12</span>
         <div data-v-01beda8f="" class="pl-stat__meta"><span data-v-01beda8f="" class="inline-flex items-center justify-center rounded-full font-medium transition-colors bg-success text-success-foreground h-5 min-w-5 px-1.5 text-xs">+3</span>
@@ -43,7 +43,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "dashboard" page 
       </div>
     </div>
   </div>
-  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="dash-recent" data-component="data_table">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="dash-recent" data-component="data_table" draggable="true">
     <section data-v-16177e6e="" data-v-2c101483="" class="pl-data-table" count="8">
       <h3 data-v-16177e6e="" class="pl-data-table__title">Recent work orders</h3>
       <div data-v-16177e6e="" class="relative w-full overflow-auto rounded-m border border-background-muted font-sans text-sm leading-[1.2] text-text-black-1">
@@ -65,7 +65,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "dashboard" page 
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">in_progress</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">medium</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Wiley Buckridge</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-28</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-29</td>
             </tr>
             <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2</td>
@@ -73,7 +73,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "dashboard" page 
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Leonie Dibbert</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-29</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-30</td>
             </tr>
             <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">3</td>
@@ -81,7 +81,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "dashboard" page 
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">done</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Jan Langosh</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-10-01</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-10-02</td>
             </tr>
             <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">4</td>
@@ -89,7 +89,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "dashboard" page 
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">open</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">medium</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Fleta Kulas PhD</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-27</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-28</td>
             </tr>
             <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">5</td>
@@ -97,7 +97,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "dashboard" page 
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">open</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Evans Anderson</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-29</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-30</td>
             </tr>
             <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">6</td>
@@ -113,7 +113,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "dashboard" page 
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">medium</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Talon Koss V</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-25</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-26</td>
             </tr>
             <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">8</td>
@@ -121,7 +121,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "dashboard" page 
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">low</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Kate Paucek</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-16</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-17</td>
             </tr>
           </tbody>
         </table>
@@ -134,7 +134,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "dashboard" page 
 
 exports[`FieldOps golden render (Interface mode) > renders the "job_checklist" page tree 1`] = `
 "<div data-v-44a065fb="" class="pl-page">
-  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="cl-header" data-component="page_header">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="cl-header" data-component="page_header" draggable="true">
     <header data-v-e94bf260="" data-v-2c101483="" class="pl-page-header">
       <div data-v-e94bf260="" class="pl-page-header__text">
         <div data-v-e94bf260="" class="pl-page-header__titlerow">
@@ -145,7 +145,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "job_checklist" p
       <!--v-if-->
     </header>
   </div>
-  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="cl-table" data-component="data_table">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="cl-table" data-component="data_table" draggable="true">
     <section data-v-16177e6e="" data-v-2c101483="" class="pl-data-table" count="8">
       <h3 data-v-16177e6e="" class="pl-data-table__title">Checklist items</h3>
       <div data-v-16177e6e="" class="relative w-full overflow-auto rounded-m border border-background-muted font-sans text-sm leading-[1.2] text-text-black-1">
@@ -227,7 +227,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "job_checklist" p
 
 exports[`FieldOps golden render (Interface mode) > renders the "work_orders" page tree 1`] = `
 "<div data-v-44a065fb="" class="pl-page">
-  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="wo-header" data-component="page_header">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="wo-header" data-component="page_header" draggable="true">
     <header data-v-e94bf260="" data-v-2c101483="" class="pl-page-header">
       <div data-v-e94bf260="" class="pl-page-header__text">
         <div data-v-e94bf260="" class="pl-page-header__titlerow">
@@ -243,7 +243,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "work_orders" pag
         </button></div>
     </header>
   </div>
-  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="wo-stats" data-component="stat_group">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="wo-stats" data-component="stat_group" draggable="true">
     <div data-v-01beda8f="" data-v-2c101483="" class="pl-stat-group">
       <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Unassigned</span><span data-v-01beda8f="" class="pl-stat__value">5</span>
         <!--v-if-->
@@ -258,7 +258,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "work_orders" pag
       </div>
     </div>
   </div>
-  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="wo-table" data-component="data_table">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="wo-table" data-component="data_table" draggable="true">
     <section data-v-16177e6e="" data-v-2c101483="" class="pl-data-table" count="8">
       <h3 data-v-16177e6e="" class="pl-data-table__title">All work orders</h3>
       <div data-v-16177e6e="" class="relative w-full overflow-auto rounded-m border border-background-muted font-sans text-sm leading-[1.2] text-text-black-1">
@@ -280,7 +280,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "work_orders" pag
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">in_progress</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">medium</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Wiley Buckridge</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-28</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-29</td>
             </tr>
             <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2</td>
@@ -288,7 +288,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "work_orders" pag
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Leonie Dibbert</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-29</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-30</td>
             </tr>
             <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">3</td>
@@ -296,7 +296,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "work_orders" pag
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">done</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Jan Langosh</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-10-01</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-10-02</td>
             </tr>
             <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">4</td>
@@ -304,7 +304,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "work_orders" pag
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">open</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">medium</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Fleta Kulas PhD</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-27</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-28</td>
             </tr>
             <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">5</td>
@@ -312,7 +312,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "work_orders" pag
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">open</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">urgent</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Evans Anderson</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-29</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-30</td>
             </tr>
             <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">6</td>
@@ -328,7 +328,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "work_orders" pag
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">medium</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Talon Koss V</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-25</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-26</td>
             </tr>
             <tr data-v-16177e6e="" class="hover:bg-background-light data-[state=selected]:bg-muted">
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">8</td>
@@ -336,7 +336,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "work_orders" pag
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">blocked</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">low</td>
               <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">Kate Paucek</td>
-              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-16</td>
+              <td data-v-16177e6e="" class="bg-white px-2.5 py-[9px] align-middle border-b border-r border-background-muted text-sm font-normal leading-[1.2] text-text-black-1 last:border-r-0 [word-break:break-word] [&amp;:has([role=checkbox])]:pr-0 [&amp;>[role=checkbox]]:translate-y-0.5">2026-09-17</td>
             </tr>
           </tbody>
         </table>
@@ -349,7 +349,7 @@ exports[`FieldOps golden render (Interface mode) > renders the "work_orders" pag
 
 exports[`Preview mode golden render > leaves query-bound tables empty in Preview (live data is a later worker) 1`] = `
 "<div data-v-44a065fb="" class="pl-page">
-  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block" data-block-id="dash-header" data-component="page_header">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block" data-block-id="dash-header" data-component="page_header" draggable="false">
     <header data-v-e94bf260="" data-v-2c101483="" class="pl-page-header">
       <div data-v-e94bf260="" class="pl-page-header__text">
         <div data-v-e94bf260="" class="pl-page-header__titlerow">
@@ -368,7 +368,7 @@ exports[`Preview mode golden render > leaves query-bound tables empty in Preview
         </button></div>
     </header>
   </div>
-  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block" data-block-id="dash-stats" data-component="stat_group">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block" data-block-id="dash-stats" data-component="stat_group" draggable="false">
     <div data-v-01beda8f="" data-v-2c101483="" class="pl-stat-group">
       <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Open work orders</span><span data-v-01beda8f="" class="pl-stat__value">12</span>
         <div data-v-01beda8f="" class="pl-stat__meta"><span data-v-01beda8f="" class="inline-flex items-center justify-center rounded-full font-medium transition-colors bg-success text-success-foreground h-5 min-w-5 px-1.5 text-xs">+3</span>
@@ -390,7 +390,7 @@ exports[`Preview mode golden render > leaves query-bound tables empty in Preview
       </div>
     </div>
   </div>
-  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block" data-block-id="dash-recent" data-component="data_table">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block" data-block-id="dash-recent" data-component="data_table" draggable="false">
     <section data-v-16177e6e="" data-v-2c101483="" class="pl-data-table">
       <h3 data-v-16177e6e="" class="pl-data-table__title">Recent work orders</h3>
       <div data-v-16177e6e="" class="relative w-full overflow-auto rounded-m border border-background-muted font-sans text-sm leading-[1.2] text-text-black-1">
@@ -410,23 +410,24 @@ exports[`Preview mode golden render > leaves query-bound tables empty in Preview
 exports[`edge-case golden render > renders an empty page without crashing 1`] = `"<div data-v-44a065fb="" class="pl-page"></div>"`;
 
 exports[`edge-case golden render > renders deeply nested children recursively 1`] = `
-"<div data-v-2c101483="" class="pl-block pl-block--overlay" data-block-id="outer" data-component="container">
+"<div data-v-2c101483="" class="pl-block pl-block--overlay" data-block-id="outer" data-component="container" draggable="true">
   <div data-v-2c101483="" class="pl-slot-container">
     <!-- Recurse over children (SPEC §8). -->
-    <div data-v-2c101483="" class="pl-block pl-block--overlay" data-block-id="inner" data-component="stat_group">
+    <div data-v-2c101483="" class="pl-block pl-block--overlay" data-block-id="inner" data-component="stat_group" draggable="true">
       <div data-v-01beda8f="" data-v-2c101483="" class="pl-stat-group">
         <div data-v-01beda8f="" class="pl-stat"><span data-v-01beda8f="" class="pl-stat__label">Nested stat</span><span data-v-01beda8f="" class="pl-stat__value">42</span>
           <!--v-if-->
         </div>
       </div>
     </div>
+    <!--v-if-->
   </div>
 </div>"
 `;
 
 exports[`edge-case golden render > renders the Unknown placeholder for an unregistered component 1`] = `
 "<div data-v-44a065fb="" class="pl-page">
-  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="b1" data-component="definitely_not_a_real_component">
+  <div data-v-2c101483="" data-v-44a065fb="" class="pl-block pl-block--overlay" data-block-id="b1" data-component="definitely_not_a_real_component" draggable="true">
     <div data-v-f622c6bc="" data-v-2c101483="" class="pl-unknown" role="alert"><span data-v-f622c6bc="" class="pl-unknown__badge">Unknown component</span><code data-v-f622c6bc="" class="pl-unknown__name">definitely_not_a_real_component</code><span data-v-f622c6bc="" class="pl-unknown__id">block: b1</span></div>
   </div>
 </div>"

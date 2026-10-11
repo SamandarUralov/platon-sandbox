@@ -106,6 +106,9 @@ watch(role, () => ensureVisiblePage())
 
 <style scoped>
 .pl-preview {
+  /* Flex item of .pl-shell: without this it shrinks to its content instead of filling the frame. */
+  flex: 1;
+  min-width: 0;
   display: flex;
   min-height: 100vh;
   background: var(--pl-bg, #f8fafc);
@@ -186,9 +189,8 @@ watch(role, () => ensureVisiblePage())
   flex-direction: column;
   gap: 20px;
   padding: 24px;
-  max-width: 1200px;
+  /* The app fills the viewport the Studio picks (desktop/tablet/phone width). */
   width: 100%;
-  margin: 0 auto;
   box-sizing: border-box;
 }
 .pl-preview__canvas > :deep(.pl-page) {

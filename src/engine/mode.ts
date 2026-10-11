@@ -16,7 +16,7 @@
  */
 
 import { type InjectionKey, inject, type Ref } from 'vue'
-import type { Mode } from '@/contracts'
+import type { DataMode, Mode } from '@/contracts'
 
 export type { Mode }
 
@@ -37,11 +37,12 @@ export interface ModeCapabilities {
   realRouter: boolean
 }
 
-export function capabilitiesFor(mode: Mode): ModeCapabilities {
+/** `data` overrides the mode's data source (e.g. Preview against mock rows). */
+export function capabilitiesFor(mode: Mode, data?: DataMode | null): ModeCapabilities {
   const preview = mode === 'preview'
   return {
     mode,
-    dataLive: preview,
+    dataLive: data ? data === 'live' : preview,
     lifecycle: preview,
     actions: preview,
     editOverlay: !preview,

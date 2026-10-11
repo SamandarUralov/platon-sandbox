@@ -22,6 +22,7 @@ import type { ActionEffects } from './dispatcher'
 import { isVisibleToRole } from './roles'
 import { useSandboxStore } from '@/state'
 import BlockErrorBoundary from './BlockErrorBoundary.vue'
+import { BLOCK_DRAG_TYPE } from '@/editing/overlay'
 
 const props = defineProps<{ block: Block }>()
 
@@ -122,6 +123,13 @@ const finalProps = computed<Record<string, unknown>>(() => {
 const children = computed<Block[]>(() => props.block.children ?? [])
 
 const overlayActive = computed(() => caps.value.editOverlay)
+/**
+ * Interface: an empty container would collapse to 0px and could neither be seen nor dropped into,
+ * so it shows a drop zone (a block with a `children` array is a container, see editing/tree.ts).
+ */
+const emptyContainer = computed(
+  () => overlayActive.value && Array.isArray(props.block.children) && props.block.children.length === 0,
+)
 const isSelected = computed(() => store.selectedBlockId === props.block.id)
 const isHover = computed(() => store.hoverBlockId === props.block.id)
 
@@ -142,6 +150,15 @@ function onLeave() {
     store.hoverBlock(null)
     host.hoverBlock(null)
   }
+}
+
+/** Interface: blocks are native drag sources; the drop is reported to the Studio. */
+function onDragStart(ev: DragEvent) {
+  if (!overlayActive.value || !ev.dataTransfer) return
+  // Nested blocks: only the innermost one under the pointer is dragged.
+  ev.stopPropagation()
+  ev.dataTransfer.setData(BLOCK_DRAG_TYPE, props.block.id)
+  ev.dataTransfer.effectAllowed = 'move'
 }
 
 function onBlockError({ blockId, error }: { blockId: string; error: unknown }) {
@@ -170,6 +187,8 @@ if (!valid.value) {
       }"
       :data-block-id="block.id"
       :data-component="block.component"
+      :draggable="overlayActive"
+      @dragstart="onDragStart"
       @click="onSelect"
       @mouseenter="onEnter"
       @mouseleave="onLeave"
@@ -178,6 +197,7 @@ if (!valid.value) {
         <component :is="component" v-bind="finalProps" v-on="eventHandlers">
           <!-- Recurse over children (SPEC §8). -->
           <BlockRenderer v-for="child in children" :key="child.id" :block="child" />
+          <div v-if="emptyContainer" class="pl-block__drop-zone">Drop here</div>
         </component>
       </BlockErrorBoundary>
     </div>
@@ -195,6 +215,15 @@ if (!valid.value) {
 }
 .pl-block--overlay.pl-block--hover {
   box-shadow: 0 0 0 1px var(--pl-accent, #6366f1);
+}
+.pl-block__drop-zone {
+  display: grid;
+  place-items: center;
+  min-height: 64px;
+  border: 1.5px dashed var(--pl-border, #cbd5e1);
+  border-radius: 10px;
+  color: var(--pl-fg-muted, #64748b);
+  font-size: 12px;
 }
 .pl-block--overlay.pl-block--selected {
   box-shadow: 0 0 0 2px var(--pl-accent, #6366f1);

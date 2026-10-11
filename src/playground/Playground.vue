@@ -42,7 +42,7 @@ const roles = computed<string[]>(() => meta.value.roles ?? [])
 const pages = computed(() => meta.value.pages ?? [])
 
 const iframe = ref<HTMLIFrameElement | null>(null)
-const bridge = new StudioBridge()
+const bridge = new StudioBridge({ targetOrigin: window.location.origin })
 const sandboxReady = ref(false)
 
 const log = ref<LogEntry[]>([])

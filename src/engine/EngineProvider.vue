@@ -7,18 +7,19 @@
  * edit patches (same meta id) keep it stable.
  */
 import { computed, provide, toRef, watchEffect } from 'vue'
-import type { Mode, ProjectMeta } from '@/contracts'
+import type { DataMode, Mode, ProjectMeta } from '@/contracts'
 import { createEngine, EngineKey } from './engine'
 import { CapabilitiesKey, capabilitiesFor, ModeKey } from './mode'
 import { useHost } from './host'
 import { applyTheme } from '@/theme'
 
-const props = defineProps<{ meta: ProjectMeta; mode: Mode }>()
+const props = defineProps<{ meta: ProjectMeta; mode: Mode; data?: DataMode | null }>()
 const host = useHost()
 
 const engine = createEngine({
   meta: props.meta,
   mode: props.mode,
+  dataLive: capabilitiesFor(props.mode, props.data).dataLive,
   onError: (error, source) =>
     host.reportError({
       message: error instanceof Error ? error.message : String(error),
@@ -31,7 +32,7 @@ provide(EngineKey, engine)
 provide(ModeKey, toRef(props, 'mode'))
 provide(
   CapabilitiesKey,
-  computed(() => capabilitiesFor(props.mode)),
+  computed(() => capabilitiesFor(props.mode, props.data)),
 )
 
 // Project theme tokens → CSS variables (SPEC §2).

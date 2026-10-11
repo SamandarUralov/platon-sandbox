@@ -76,7 +76,9 @@ watch(
 onBeforeUnmount(leavePage)
 
 function onBackgroundClick() {
-  if (caps.value.editOverlay) store.selectBlock(null)
+  if (!caps.value.editOverlay) return
+  store.selectBlock(null)
+  host.selectBlock(null)
 }
 </script>
 
@@ -97,8 +99,6 @@ function onBackgroundClick() {
   flex-direction: column;
   gap: 20px;
   padding: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
 }

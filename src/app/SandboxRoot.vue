@@ -17,7 +17,24 @@ const store = useSandboxStore()
 
 const meta = computed(() => store.meta)
 const page = computed(() => store.currentPage)
-const engineKey = computed(() => (meta.value ? `${meta.value.id}:${store.mode}` : 'none'))
+/**
+ * Studio re-sends `init` on every edit. Layout/prop edits keep the engine; a
+ * change to what the engine compiles or seeds up front (custom components,
+ * hooks, data models) rebuilds it.
+ */
+const engineInputs = computed(() => {
+  const m = meta.value
+  return m ? hash(JSON.stringify([m.custom_components, m.global_hooks, m.data_models])) : 0
+})
+const engineKey = computed(() =>
+  meta.value ? `${meta.value.id}:${store.mode}:${store.dataMode ?? ''}:${engineInputs.value}` : 'none',
+)
+
+function hash(s: string): number {
+  let h = 5381
+  for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0
+  return h
+}
 
 function navigate(pageId: string) {
   store.navigateTo(pageId)
@@ -25,8 +42,8 @@ function navigate(pageId: string) {
 </script>
 
 <template>
-  <div v-if="meta" class="pl-shell">
-    <EngineProvider :key="engineKey" :meta="meta" :mode="store.mode">
+  <div v-if="meta" class="pl-shell" :class="{ 'pl-shell--fit': store.fit }" data-pl-shell>
+    <EngineProvider :key="engineKey" :meta="meta" :mode="store.mode" :data="store.dataMode">
       <!-- Preview mode: full app chrome (role switcher + live filter + CRUD matrix). -->
       <PreviewShell v-if="store.mode === 'preview'" />
       <!-- Interface mode: edit-canvas frame. -->
@@ -64,6 +81,10 @@ function navigate(pageId: string) {
   min-height: 100vh;
   background: var(--pl-bg, #f8fafc);
   color: var(--pl-fg, #0f172a);
+}
+/* The host sizes the iframe to the content, so a viewport min-height would never shrink. */
+.pl-shell--fit {
+  min-height: 0;
 }
 .pl-shell__sidebar {
   width: 240px;

@@ -58,9 +58,25 @@ components and user templates can be compiled from strings at runtime (SPEC §4)
 
 ## postMessage protocol (both sides agree on this)
 
-- **Studio → Sandbox:** `init(meta, mode)`, `patch({blockId,path,value})`,
-  `set-mode`, `set-role`, `navigate`, `select-block`.
+- **Studio → Sandbox:** `init(meta, mode, pageId?, role?, data?, fit?)`,
+  `patch({blockId,path,value})`, `set-mode`, `set-role`, `navigate`,
+  `select-block`, `drag-over`, `drag-end`. `data: 'mock'` makes Preview read the
+  seeded mock store instead of the backend; `fit` sizes the document to its
+  content and turns on `content-size` reports.
 - **Sandbox → Studio:** `ready`, `block-selected`, `block-hover`, `drop-target`,
-  `error`, `console`.
+  `drop-clear`, `drop` (a drag released over the canvas; `source.blockId` when a
+  block was dragged inside the Sandbox), `content-size`, `page-changed`,
+  `role-changed`, `error`, `console`.
+
+The Studio re-sends `init` on every edit; the engine is rebuilt only when custom
+components, global hooks or data models change.
+
+### Origins
+
+The embedding Studio passes `?studioOrigin=<origin>`. It is honoured only when it
+is listed in `VITE_STUDIO_ORIGINS` (see `.env.example`); the bridge then posts to
+exactly that origin and drops messages from any other. Without the param the
+Sandbox's own origin is used (the playground). The dev server listens on port
+5175 and sends `Content-Security-Policy: frame-ancestors` for the same list.
 
 Messages are wrapped in a versioned, channel-tagged envelope (`src/protocol/messages.ts`).

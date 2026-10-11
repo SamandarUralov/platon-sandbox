@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import type { Block } from '@/contracts'
 import type { StudioToSandboxMessage } from '@/protocol'
-import { attachEditOverlay } from './overlay'
+import { attachEditOverlay, BLOCK_DRAG_TYPE } from './overlay'
 import type { RectMap } from './hitTest'
 
 const r = (x: number, y: number, width: number, height: number) => ({ x, y, width, height })
@@ -50,6 +50,7 @@ function makeHost() {
   return {
     dropTarget: vi.fn(),
     clearDropTarget: vi.fn(),
+    drop: vi.fn(),
     bridge: fb.bridge as never,
     _fb: fb,
   }
@@ -105,5 +106,52 @@ describe('attachEditOverlay — Studio-forwarded drag', () => {
     host._fb.emit({ type: 'drag-end' })
     expect(host.dropTarget).not.toHaveBeenCalled()
     expect(host.clearDropTarget).not.toHaveBeenCalled()
+  })
+})
+
+/** jsdom has no DragEvent: a plain cancelable event with the fields the overlay reads. */
+function dragEvent(type: string, x: number, y: number, data: Record<string, string> = {}) {
+  const ev = new Event(type, { bubbles: true, cancelable: true })
+  Object.assign(ev, { clientX: x, clientY: y, dataTransfer: { getData: (k: string) => data[k] ?? '' } })
+  return ev
+}
+
+describe('attachEditOverlay — native drop', () => {
+  it('reports where a drop landed, with the dragged block id', () => {
+    const host = makeHost()
+    const dispose = attachEditOverlay({
+      host,
+      getTree: () => tree,
+      isOverlayActive: () => true,
+      collectRects: () => rects,
+      win: window,
+    })
+
+    const ev = dragEvent('drop', 100, 105, { [BLOCK_DRAG_TYPE]: 'A' })
+    document.dispatchEvent(ev)
+
+    expect(ev.defaultPrevented).toBe(true)
+    expect(host.drop).toHaveBeenCalledWith({ parentId: 'SECTION', index: 1, source: { blockId: 'A' } })
+    expect(host.clearDropTarget).toHaveBeenCalled()
+    dispose()
+  })
+
+  it('stacks children of a row horizontally', () => {
+    const host = makeHost()
+    const row: Block[] = [
+      { id: 'ROW', component: 'row', children: [{ id: 'L', component: 'text' }, { id: 'R', component: 'text' }] },
+    ]
+    const dispose = attachEditOverlay({
+      host,
+      getTree: () => row,
+      isOverlayActive: () => true,
+      collectRects: () => ({ ROW: r(0, 0, 400, 100), L: r(0, 0, 200, 100), R: r(200, 0, 200, 100) }),
+      win: window,
+    })
+
+    // Right half of L, vertically low: horizontal stacking puts it between L and R.
+    document.dispatchEvent(dragEvent('drop', 150, 90))
+    expect(host.drop).toHaveBeenCalledWith({ parentId: 'ROW', index: 1, source: undefined })
+    dispose()
   })
 })

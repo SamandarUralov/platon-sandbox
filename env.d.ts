@@ -1,5 +1,10 @@
 /// <reference types="vite/client" />
 
+interface ImportMetaEnv {
+  /** Comma-separated Studio origins allowed to embed the Sandbox. */
+  readonly VITE_STUDIO_ORIGINS?: string
+}
+
 declare module '*.vue' {
   import type { DefineComponent } from 'vue'
   const component: DefineComponent<Record<string, unknown>, Record<string, unknown>, unknown>

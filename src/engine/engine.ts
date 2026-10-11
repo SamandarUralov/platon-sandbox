@@ -48,6 +48,8 @@ export interface EngineContext {
 export interface CreateEngineOptions {
   meta: ProjectMeta
   mode: Mode
+  /** Read from the live backend; defaults to `mode === 'preview'` (SPEC §5). */
+  dataLive?: boolean
   onError?: (error: unknown, source?: string) => void
   /** Base URL for the Preview axios instance. */
   httpBaseUrl?: string
@@ -82,6 +84,7 @@ function buildHooksNamespace(
 
 export function createEngine(opts: CreateEngineOptions): EngineContext {
   const { meta, mode } = opts
+  const dataLive = opts.dataLive ?? mode === 'preview'
 
   const registry = createRegistry()
   const importMap = createImportMap()
@@ -114,11 +117,11 @@ export function createEngine(opts: CreateEngineOptions): EngineContext {
   // Preview = real axios cached through tanstack-query. A QueryClient is always
   // provided in Preview so caching is real even when none is injected.
   const query: QueryEngine = createQueryEngineForMode({
-    mode,
+    mode: dataLive ? 'preview' : 'interface',
     source: dataSource,
     http,
     queryClient:
-      mode === 'preview'
+      dataLive
         ? (opts.queryClient ??
           // Sensible Preview defaults: cache reads within a session; explicit
           // refetch actions (SPEC §2 `refetch`) invalidate when implemented.

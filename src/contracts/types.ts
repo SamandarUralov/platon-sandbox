@@ -11,6 +11,9 @@
 /** Runtime mode for the whole engine (SPEC §5). */
 export type Mode = 'interface' | 'preview'
 
+/** Where block queries read from: the in-memory mock store or the live backend. */
+export type DataMode = 'mock' | 'live'
+
 /** A column in a data model (SPEC §2 data_models). */
 export interface DataModelColumn {
   name: string

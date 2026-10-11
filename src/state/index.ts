@@ -11,7 +11,7 @@
 
 import { defineStore } from 'pinia'
 import { computed, reactive, ref, shallowRef } from 'vue'
-import type { Block, BlockPatch, Mode, PageMeta, ProjectMeta } from '@/contracts'
+import type { Block, BlockPatch, DataMode, Mode, PageMeta, ProjectMeta } from '@/contracts'
 
 export interface ConsoleEntry {
   level: 'log' | 'info' | 'warn' | 'error' | 'debug'
@@ -77,6 +77,10 @@ export const useSandboxStore = defineStore('platon-sandbox', () => {
   // shallowRef: meta is a large tree; we mutate nested nodes reactively below.
   const meta = shallowRef<ProjectMeta | null>(null)
   const mode = ref<Mode>('interface')
+  /** Explicit data source; null follows the mode (SPEC §5). */
+  const dataMode = ref<DataMode | null>(null)
+  /** Document sizes to its content and reports `content-size` (Studio canvas). */
+  const fit = ref(false)
   const currentPageId = ref<string | null>(null)
   const role = ref<string | null>(null)
   const selectedBlockId = ref<string | null>(null)
@@ -94,9 +98,14 @@ export const useSandboxStore = defineStore('platon-sandbox', () => {
 
   const roles = computed<string[]>(() => meta.value?.roles ?? [])
 
-  function loadMeta(next: ProjectMeta, opts: { mode?: Mode; pageId?: string; role?: string | null } = {}) {
+  function loadMeta(
+    next: ProjectMeta,
+    opts: { mode?: Mode; pageId?: string; role?: string | null; data?: DataMode; fit?: boolean } = {},
+  ) {
     meta.value = next
     if (opts.mode) mode.value = opts.mode
+    dataMode.value = opts.data ?? null
+    fit.value = opts.fit ?? false
     currentPageId.value = opts.pageId ?? next.pages[0]?.id ?? null
     role.value = opts.role ?? null
     // Hydrate global state.
@@ -152,6 +161,8 @@ export const useSandboxStore = defineStore('platon-sandbox', () => {
   return {
     meta,
     mode,
+    dataMode,
+    fit,
     currentPageId,
     role,
     selectedBlockId,

@@ -1,11 +1,15 @@
 /// <reference types="vitest/config" />
 import { fileURLToPath, URL } from 'node:url'
+import { loadEnv } from 'vite'
 import { defineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 
 // SPEC §4: Vue must load with the RUNTIME COMPILER so custom components and
 // user templates can be compiled from strings at runtime (not just build time).
-export default defineConfig({
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), 'VITE_')
+  const studioOrigins = (env.VITE_STUDIO_ORIGINS ?? '').split(',').map((s) => s.trim()).filter(Boolean)
+  return {
   plugins: [vue()],
   resolve: {
     alias: {
@@ -27,9 +31,12 @@ export default defineConfig({
   },
   server: {
     host: true,
-    // Sandbox is embedded as an <iframe> by the Studio — do not block framing.
+    // 5173/5174 are the Studio and the Constructor.
+    port: 5175,
+    strictPort: true,
+    // Embedded as an <iframe> by the Studio: allow framing only by listed origins.
     headers: {
-      'X-Frame-Options': 'ALLOWALL',
+      'Content-Security-Policy': `frame-ancestors 'self' ${studioOrigins.join(' ')}`.trim(),
     },
   },
   // Vitest (SPEC §11): component + unit tests run in jsdom so Vue renders.
@@ -38,4 +45,5 @@ export default defineConfig({
     globals: true,
     include: ['src/**/*.{test,spec}.ts'],
   },
+}
 })

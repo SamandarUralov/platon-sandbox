@@ -20,13 +20,26 @@ import type { Block } from '@/contracts'
 import { capabilitiesFor } from '@/engine/mode'
 import { useHost, type SandboxHost } from '@/engine/host'
 import { useSandboxStore } from '@/state'
-import type { Point, Rect } from './geometry'
+import type { Orientation, Point, Rect } from './geometry'
 import { type RectMap, collectBlockRects } from './hitTest'
 import { resolveDropTarget } from './dropTarget'
+import { flattenTree } from './tree'
+
+/** dataTransfer type carrying the id of a block dragged inside the Sandbox. */
+export const BLOCK_DRAG_TYPE = 'application/x-platon-block'
+
+/** `row` containers lay children out side by side; everything else stacks. */
+function orientationIn(tree: Block[]): (parentId: string | null) => Orientation {
+  return (parentId) => {
+    if (parentId === null) return 'vertical'
+    const node = flattenTree(tree).find((n) => n.block.id === parentId)
+    return node?.block.component === 'row' ? 'horizontal' : 'vertical'
+  }
+}
 
 export interface EditOverlayDeps {
   /** Drop-target reporting surface (typically the SandboxHost). */
-  host: Pick<SandboxHost, 'dropTarget' | 'clearDropTarget' | 'bridge'>
+  host: Pick<SandboxHost, 'dropTarget' | 'clearDropTarget' | 'drop' | 'bridge'>
   /** Current page's top-level block tree (authoritative). */
   getTree: () => Block[]
   /** Overlay only runs when this is true (Interface mode). */
@@ -48,12 +61,17 @@ export function attachEditOverlay(deps: EditOverlayDeps): () => void {
   const collect = deps.collectRects ?? collectBlockRects
   const win = deps.win ?? (typeof window !== 'undefined' ? window : null)
 
+  const locate = (point: Point) => {
+    const tree = deps.getTree()
+    return resolveDropTarget(tree, collect(), point, {
+      rootRect: deps.getRootRect?.(),
+      orientationOf: orientationIn(tree),
+    })
+  }
+
   const resolve = (point: Point): void => {
     if (!deps.isOverlayActive()) return
-    const rects = collect()
-    const target = resolveDropTarget(deps.getTree(), rects, point, {
-      rootRect: deps.getRootRect?.(),
-    })
+    const target = locate(point)
     if (target) deps.host.dropTarget(target)
     else deps.host.clearDropTarget()
   }
@@ -78,20 +96,31 @@ export function attachEditOverlay(deps: EditOverlayDeps): () => void {
     ev.preventDefault()
     resolve({ x: ev.clientX, y: ev.clientY })
   }
-  const onDragLeaveOrDrop = (): void => clear()
+  const onDragEnd = (): void => clear()
+  // The Studio cannot see a drop inside this (cross-origin) document, so report
+  // where it landed; the Studio applies the edit and re-sends the meta.
+  const onDrop = (ev: DragEvent): void => {
+    if (!deps.isOverlayActive()) return
+    ev.preventDefault()
+    const target = locate({ x: ev.clientX, y: ev.clientY })
+    deps.host.clearDropTarget()
+    if (!target) return
+    const blockId = ev.dataTransfer?.getData(BLOCK_DRAG_TYPE) || undefined
+    deps.host.drop({ parentId: target.parentId, index: target.index, source: blockId ? { blockId } : undefined })
+  }
 
   if (doc) {
     doc.addEventListener('dragover', onDragOver)
-    doc.addEventListener('drop', onDragLeaveOrDrop)
-    doc.addEventListener('dragend', onDragLeaveOrDrop)
+    doc.addEventListener('drop', onDrop)
+    doc.addEventListener('dragend', onDragEnd)
   }
 
   return () => {
     unsubscribe?.()
     if (doc) {
       doc.removeEventListener('dragover', onDragOver)
-      doc.removeEventListener('drop', onDragLeaveOrDrop)
-      doc.removeEventListener('dragend', onDragLeaveOrDrop)
+      doc.removeEventListener('drop', onDrop)
+      doc.removeEventListener('dragend', onDragEnd)
     }
   }
 }

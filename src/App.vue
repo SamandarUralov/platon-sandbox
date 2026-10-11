@@ -8,7 +8,7 @@
  * - Standalone (no Studio parent, e.g. `ao preview`): loads the FieldOps demo
  *   in Interface mode so the runtime is demonstrable on its own (SPEC §12).
  */
-import { onBeforeUnmount, onMounted, provide } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, provide, watch } from 'vue'
 import { parseProjectMeta } from '@/contracts'
 import { SandboxBridge, type StudioToSandboxMessage } from '@/protocol'
 import { HostKey, type SandboxHost } from '@/engine'
@@ -24,9 +24,10 @@ const bridge = new SandboxBridge()
 const host: SandboxHost = {
   selectBlock: (id) => bridge.send({ type: 'block-selected', blockId: id }),
   hoverBlock: (id) => bridge.send({ type: 'block-hover', blockId: id }),
-  dropTarget: ({ parentId, index, rect }) =>
-    bridge.send({ type: 'drop-target', parentId, index, rect }),
+  dropTarget: ({ parentId, index, rect, parentRect }) =>
+    bridge.send({ type: 'drop-target', parentId, index, rect, parentRect }),
   clearDropTarget: () => bridge.send({ type: 'drop-clear' }),
+  drop: ({ parentId, index, source }) => bridge.send({ type: 'drop', parentId, index, source }),
   reportError: ({ message, stack, blockId, pageId }) => {
     store.pushConsole({ level: 'error', args: [message], ts: Date.now(), source: blockId ?? pageId })
     bridge.send({
@@ -49,7 +50,13 @@ function handleStudioMessage(msg: StudioToSandboxMessage) {
     case 'init': {
       try {
         const meta = parseProjectMeta(msg.meta)
-        store.loadMeta(meta, { mode: msg.mode, pageId: msg.pageId, role: msg.role ?? null })
+        store.loadMeta(meta, {
+          mode: msg.mode,
+          pageId: msg.pageId,
+          role: msg.role ?? null,
+          data: msg.data,
+          fit: msg.fit,
+        })
       } catch (err) {
         host.reportError({ message: `invalid init meta: ${String(err)}` })
       }
@@ -77,6 +84,43 @@ function handleStudioMessage(msg: StudioToSandboxMessage) {
 
 let unsubscribe: (() => void) | null = null
 let disposeOverlay: (() => void) | null = null
+let sizeObserver: ResizeObserver | null = null
+
+// Tell the Studio about navigation / role changes made inside the Sandbox (menu,
+// `navigate` action, in-sandbox role switcher). A Studio command that sets the
+// same value produces no change, so this cannot loop.
+watch(
+  () => store.currentPage?.id,
+  (pageId) => pageId && bridge.send({ type: 'page-changed', pageId }),
+)
+watch(
+  () => store.role,
+  (role) => bridge.send({ type: 'role-changed', role }),
+)
+
+// In fit mode the Studio sizes the iframe to the content height we report.
+let lastHeight = 0
+function reportSize() {
+  const shell = document.querySelector<HTMLElement>('[data-pl-shell]')
+  const height = Math.ceil(shell?.getBoundingClientRect().height ?? 0)
+  if (!height || height === lastHeight) return
+  lastHeight = height
+  bridge.send({ type: 'content-size', height })
+}
+watch(
+  () => [store.fit, store.meta !== null] as const,
+  async ([fit]) => {
+    sizeObserver?.disconnect()
+    sizeObserver = null
+    lastHeight = 0
+    if (!fit || typeof ResizeObserver === 'undefined') return
+    await nextTick()
+    const shell = document.querySelector<HTMLElement>('[data-pl-shell]')
+    if (!shell) return
+    sizeObserver = new ResizeObserver(reportSize)
+    sizeObserver.observe(shell)
+  },
+)
 
 function measureCanvasRoot() {
   const el = document.querySelector<HTMLElement>('[data-pl-canvas]')
@@ -113,6 +157,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   unsubscribe?.()
   disposeOverlay?.()
+  sizeObserver?.disconnect()
   bridge.stop()
 })
 </script>
