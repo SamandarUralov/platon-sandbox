@@ -29,6 +29,8 @@ export interface SandboxHost {
   reportError(payload: { message: string; stack?: string; blockId?: string; pageId?: string }): void
   /** Mirror a console entry to the Studio console panel. */
   reportConsole(level: 'log' | 'info' | 'warn' | 'error' | 'debug', args: unknown[]): void
+  /** Preview: a block emitted an event; the Studio runs the page script for it. */
+  blockEvent(blockId: string, event: string, payload?: unknown): void
   /** Underlying bridge (may be standalone/no-op). */
   bridge: SandboxBridge | null
 }
@@ -45,6 +47,7 @@ export function noopHost(): SandboxHost {
     drop() {},
     reportError() {},
     reportConsole() {},
+    blockEvent() {},
     bridge: null,
   }
 }

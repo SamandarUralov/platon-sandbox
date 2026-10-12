@@ -122,12 +122,26 @@ export interface BlockHoverMessage {
 
 /**
  * Where the selected block sits in the viewport (edit overlay, Interface only), so the Studio can
- * draw its block toolbar over the iframe. Re-sent when the layout moves it; `rect` null = gone.
+ * draw its block toolbar (and grid resize handle) over the iframe. Re-sent when the layout moves it; `rect` null = gone.
  */
 export interface BlockRectMessage {
   type: 'block-rect'
   blockId: string | null
   rect: { x: number; y: number; width: number; height: number } | null
+  /** The 12-column row the block sits in, when it sits in one (for the Studio's resize handle). */
+  grid?: { width: number; stacked: boolean }
+}
+
+/**
+ * Preview: a block emitted an event (button click, input change, row click, ...). The Studio runs
+ * the page script's `on` handler for it. `event` is the component's own name (e.g. `row-click`);
+ * `payload` is its first argument as plain data.
+ */
+export interface BlockEventMessage {
+  type: 'block-event'
+  blockId: string
+  event: string
+  payload?: unknown
 }
 
 /**
@@ -200,6 +214,7 @@ export type SandboxToStudioMessage =
   | BlockSelectedMessage
   | BlockHoverMessage
   | BlockRectMessage
+  | BlockEventMessage
   | DropTargetMessage
   | DropClearMessage
   | DropMessage

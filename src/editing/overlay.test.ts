@@ -154,4 +154,25 @@ describe('attachEditOverlay — native drop', () => {
     expect(host.drop).toHaveBeenCalledWith({ parentId: 'ROW', index: 1, source: undefined })
     dispose()
   })
+
+  it('stacks children of a row vertically once its grid has stacked them', () => {
+    const host = makeHost()
+    const row: Block[] = [
+      { id: 'ROW', component: 'row', children: [{ id: 'T', component: 'text' }, { id: 'B', component: 'text' }] },
+    ]
+    const dispose = attachEditOverlay({
+      host,
+      getTree: () => row,
+      isOverlayActive: () => true,
+      // A narrow 12-column row: both children take the full width, one below the other.
+      collectRects: () => ({ ROW: r(0, 0, 300, 216), T: r(0, 0, 300, 100), B: r(0, 116, 300, 100) }),
+      win: window,
+    })
+
+    // Left part of B, lower half: below B, not between T and B.
+    document.dispatchEvent(dragEvent('drop', 20, 200))
+    expect(host.drop).toHaveBeenCalledWith({ parentId: 'ROW', index: 2, source: undefined })
+    dispose()
+  })
 })
+

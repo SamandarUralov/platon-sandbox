@@ -55,6 +55,28 @@ describe('layout containers render nested children', () => {
     expect(buttons[1].text()).toContain('Second')
   })
 
+  it('row with columns lays its children out on a 12-column track', () => {
+    const tree: Block = {
+      id: 'r',
+      component: 'row',
+      props: { columns: 12, gap: 8 },
+      children: [{ id: 'b1', component: 'button', props: { label: 'First' } }],
+    }
+    const row = renderTree(tree).find('.pl-row')
+    expect(row.classes()).toContain('pl-row--grid')
+    const style = row.attributes('style') ?? ''
+    // Flex, not CSS grid: auto blocks can take the room of role-hidden neighbours.
+    expect(style).toContain('--pl-row-columns: 12')
+    expect(style).toContain('--pl-row-gap: 8px')
+    expect(style).toContain('gap: 8px')
+  })
+
+  it('row without columns stays a flex row', () => {
+    const row = renderTree({ id: 'r', component: 'row', children: [] }).find('.pl-row')
+    expect(row.classes()).not.toContain('pl-row--grid')
+    expect(row.attributes('style') ?? '').not.toContain('grid')
+  })
+
   it('column renders each child block', () => {
     const tree: Block = {
       id: 'c',

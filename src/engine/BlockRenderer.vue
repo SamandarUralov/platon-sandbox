@@ -20,6 +20,8 @@ import { useHost } from './host'
 import { useCtx } from './ctx'
 import type { ActionEffects } from './dispatcher'
 import { isVisibleToRole } from './roles'
+import { layoutStyle } from './layout'
+import { emitNames, eventPayload } from './forward'
 import { useSandboxStore } from '@/state'
 import BlockErrorBoundary from './BlockErrorBoundary.vue'
 import { BLOCK_DRAG_TYPE } from '@/editing/overlay'
@@ -68,6 +70,24 @@ const eventHandlers = computed<Record<string, (payload?: unknown) => void>>(() =
     }
   }
   return handlers
+})
+
+/**
+ * Preview: every event the component declares also goes to the Studio, which runs the page script
+ * (`on: { '<ref>.<event>' }`). Runs alongside the block's own action pipeline above.
+ */
+const listeners = computed<Record<string, (payload?: unknown) => void>>(() => {
+  const own = eventHandlers.value
+  if (!caps.value.actions) return own
+  const out = { ...own }
+  for (const name of emitNames(component.value)) {
+    const action = own[name]
+    out[name] = (payload?: unknown) => {
+      action?.(payload)
+      host.blockEvent(props.block.id, name, eventPayload(payload))
+    }
+  }
+  return out
 })
 
 /** zod validation (SPEC §9). Invalid ⇒ render nothing + warn once. */
@@ -185,6 +205,7 @@ if (!valid.value) {
         'pl-block--selected': overlayActive && isSelected,
         'pl-block--hover': overlayActive && isHover,
       }"
+      :style="layoutStyle(block.layout)"
       :data-block-id="block.id"
       :data-component="block.component"
       :draggable="overlayActive"
@@ -194,7 +215,7 @@ if (!valid.value) {
       @mouseleave="onLeave"
     >
       <BlockErrorBoundary :block-id="block.id" :component="block.component" @block-error="onBlockError">
-        <component :is="component" v-bind="finalProps" v-on="eventHandlers">
+        <component :is="component" v-bind="finalProps" v-on="listeners">
           <!-- Recurse over children (SPEC §8). -->
           <BlockRenderer v-for="child in children" :key="child.id" :block="child" />
           <div v-if="emptyContainer" class="pl-block__drop-zone">Drop here</div>

@@ -13,6 +13,7 @@ import { parseProjectMeta } from '@/contracts'
 import { SandboxBridge, type StudioToSandboxMessage } from '@/protocol'
 import { HostKey, type SandboxHost } from '@/engine'
 import { capabilitiesFor } from '@/engine'
+import { gridRowOf } from '@/engine/layout'
 import { attachEditOverlay } from '@/editing'
 import { useSandboxStore } from '@/state'
 import SandboxRoot from '@/app/SandboxRoot.vue'
@@ -41,6 +42,7 @@ const host: SandboxHost = {
     store.pushConsole({ level, args, ts: Date.now() })
     bridge.send({ type: 'console', level, args })
   },
+  blockEvent: (blockId, event, payload) => bridge.send({ type: 'block-event', blockId, event, payload }),
   bridge,
 }
 provide(HostKey, host)
@@ -133,10 +135,11 @@ function reportSelectedRect() {
   const el = id ? document.querySelector<HTMLElement>(`[data-block-id="${CSS.escape(id)}"]`) : null
   const r = el?.getBoundingClientRect()
   const rect = r ? { x: r.x, y: r.y, width: r.width, height: r.height } : null
-  const key = JSON.stringify([id, rect])
+  const grid = el ? gridRowOf(el) : undefined
+  const key = JSON.stringify([id, rect, grid])
   if (key === lastRect) return
   lastRect = key
-  bridge.send({ type: 'block-rect', blockId: id, rect })
+  bridge.send({ type: 'block-rect', blockId: id, rect, ...(grid ? { grid } : {}) })
 }
 function scheduleRect() {
   if (!rectFrame) rectFrame = requestAnimationFrame(reportSelectedRect)

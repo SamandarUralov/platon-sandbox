@@ -28,12 +28,18 @@ import { flattenTree } from './tree'
 /** dataTransfer type carrying the id of a block dragged inside the Sandbox. */
 export const BLOCK_DRAG_TYPE = 'application/x-platon-block'
 
-/** `row` containers lay children out side by side; everything else stacks. */
-function orientationIn(tree: Block[]): (parentId: string | null) => Orientation {
+/**
+ * `row` containers lay children out side by side; everything else stacks. A 12-column row
+ * (RowContainer with `columns`) stacks its children on narrow widths too, so a row whose first two
+ * children sit one below the other is read as vertical.
+ */
+function orientationIn(tree: Block[], rects: RectMap): (parentId: string | null) => Orientation {
   return (parentId) => {
     if (parentId === null) return 'vertical'
     const node = flattenTree(tree).find((n) => n.block.id === parentId)
-    return node?.block.component === 'row' ? 'horizontal' : 'vertical'
+    if (node?.block.component !== 'row') return 'vertical'
+    const [a, b] = (node.block.children ?? []).map((c) => rects[c.id])
+    return a && b && b.y >= a.y + a.height - 1 ? 'vertical' : 'horizontal'
   }
 }
 
@@ -63,9 +69,10 @@ export function attachEditOverlay(deps: EditOverlayDeps): () => void {
 
   const locate = (point: Point) => {
     const tree = deps.getTree()
-    return resolveDropTarget(tree, collect(), point, {
+    const rects = collect()
+    return resolveDropTarget(tree, rects, point, {
       rootRect: deps.getRootRect?.(),
-      orientationOf: orientationIn(tree),
+      orientationOf: orientationIn(tree, rects),
     })
   }
 
